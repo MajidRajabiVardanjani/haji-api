@@ -1,0 +1,43 @@
+{
+  "name": "haji-api",
+  "version": "1.0.40",
+  "description": "https://haji-api.ir وب سرویس های حاجی",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HajiAPI",
+    "Haji",
+    "API",
+    "Haji-API",
+    "وب سرویس",
+    "وب سرویس حاجی",
+    "حاجی وب سرویس",
+    "هوش مصنوعی",
+    "AI",
+    "Artificial intelligence",
+    "GPT",
+    "GPT-4",
+    "llama",
+    "v2ray",
+    "mtproto",
+    "Stable Diffusion",
+    "Dall-E",
+    "DallE",
+    "دیجی کالا",
+    "DigiKala",
+    "Torob",
+    "نوبیتکس",
+    "Photo To Anime",
+    "متن به گفتار",
+    "گفتار به متن",
+    "TTS",
+    "STT"
+  ],
+  "author": "Majid Rajabi Vardanjani",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7"
+  }
+}

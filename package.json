@@ -1,10 +1,14 @@
 {
   "name": "haji-api",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "https://haji-api.ir وب سرویس های حاجی",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MajidRajabiVardanjani/haji-api.git"
   },
   "keywords": [
     "HajiAPI",

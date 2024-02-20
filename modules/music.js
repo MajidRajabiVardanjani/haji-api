@@ -47,8 +47,7 @@ module.exports = {
             }
 
         });
-    },
-    soundCloudDownload: ({url}) => {
+    }, soundCloudDownload: ({url}) => {
         url = url ? url : "";
         return new Promise(resolve => {
             if (url.includes("soundcloud.com")) {
@@ -65,11 +64,45 @@ module.exports = {
                 });
             }
         })
-    },
-    shazam: ({url}) => {
+    }, shazam: ({url}) => {
         url = url ? url : "";
         return new Promise(resolve => {
             axios.get(`${config.apiV3}/majid/tools/shazam?url=${url}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    },
+    musicVIP: ({search}) => {
+        search = search ? search.toString().trim() : "آهنگ";
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/music/vip?s=${encodeURI(search)}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    },
+    spotify: ({method, search, url}) => {
+        url = url ? url : "";
+        search = search ? search.toString().trim() : "آهنگ";
+        method = method ? method : "search";
+
+        let furl = `${config.apiV3}/majid/spotify`;
+
+        if (method === "download") {
+            furl = `${furl}/download?url=${url}`
+        } else {
+            furl = `${furl}/search?s=${encodeURI(search)}`;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
                 .then(r => {
                     resolve(r.data.result);
                 })

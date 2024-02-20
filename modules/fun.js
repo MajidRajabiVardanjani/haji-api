@@ -138,4 +138,15 @@ module.exports = {
                 });
         });
     },
+    falPhoto: () => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/fal/hafez/photo`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    }
 }

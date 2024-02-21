@@ -140,9 +140,12 @@ module.exports = {
     },
     falPhoto: () => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/fal/hafez/photo`)
+            axios.get(`${config.apiV3}/majid/tools/fal/hafez/photo`,
+                {
+                    responseType: 'arraybuffer'
+                })
                 .then(r => {
-                    resolve(r.data.result);
+                    resolve(config.arrayBufferToBase64(r.data));
                 })
                 .catch(err => {
                     config.resolveError(resolve, err);

@@ -281,5 +281,29 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         });
+    },
+    webScraper: ({url}) => {
+        url = url ? url : "";
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/scraper?url=${url}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    },
+    webScraperPro: ({url}) => {
+        url = url ? url : "";
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/scraper/pro?url=${url}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
     }
 }

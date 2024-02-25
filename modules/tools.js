@@ -173,6 +173,17 @@ module.exports = {
                 });
         });
     },
+    shorLink2: ({url}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.api}/short-link/?url=${url}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    },
     nationalCode: ({text}) => {
         text = text ? text : "";
         return new Promise(resolve => {
@@ -298,6 +309,25 @@ module.exports = {
         url = url ? url : "";
         return new Promise(resolve => {
             axios.get(`${config.apiV3}/majid/tools/scraper/pro?url=${url}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    },
+    html2json: ({html}) => {
+        html = html ? html : "<div>سلام دنیا!</div>";
+        let params = new URLSearchParams();
+        params.append('html', html);
+
+        return new Promise(resolve => {
+            axios.post(`${config.apiV3}/majid/tools/html2json`, html, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            })
                 .then(r => {
                     resolve(r.data.result);
                 })

@@ -20,6 +20,7 @@ npm i haji-api --save
 
 ## لیست سرویس های در دسترس
 
+- **[HTML to JSON](#HTML-to-JSON)**
 - **[وب اسکرپر](#وب-اسکرپر)**
 - **[جوک رندوم](#جوک-رندوم)**
 - **[دانلود ویدیو پینترست](#دانلود-ویدیو-پینترست)**
@@ -100,6 +101,16 @@ npm i haji-api --save
 - **[تاریخ و ساعت](#تاریخ-و-ساعت)**
 - **[متن کتب معروف رندوم](#متن-کتب-معروف-رندوم)**
 - **[جمله انگیزشی رندوم](#جمله-انگیزشی-رندوم)**
+
+## HTML to JSON
+
+```javascript
+const {html2json} = require("haji-api/modules/tools");
+
+html2json({
+    html: "<p>کد HTML شما</p>"
+}).then(console.log);
+```
 
 ## وب اسکرپر
 
@@ -701,9 +712,14 @@ exchangeRate()
 ## کوتاه کننده لینک
 
 ```javascript
-const {shorLink} = require("haji-api/modules/tools");
+const {shorLink, shorLink2} = require("haji-api/modules/tools");
 
+// وب سرویس 1
 shorLink({url: "https://google.com"})
+    .then(console.log);
+
+// وب سرویس 2
+shorLink2({url: "https://google.com"})
     .then(console.log);
 ```
 

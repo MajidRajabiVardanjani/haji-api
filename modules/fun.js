@@ -162,5 +162,31 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         });
+    },
+    cooking: ({method, search, url}) => {
+        method = method ? method : "search";
+        search = search ? search.toString().trim() : "";
+        url = url ? url : "";
+        let furl = `${config.apiV3}/majid/fun/cooking`;
+
+        if (method === "info") {
+            furl = `${furl}/info?url=${url}`;
+        } else {
+            furl = `${furl}/search?s=${encodeURI(search)}`;
+        }
+
+        return new Promise(resolve => {
+            if (url.includes("https://rezim.ir")) {
+                axios.get(furl)
+                    .then(r => {
+                        resolve(r.data.result);
+                    })
+                    .catch(err => {
+                        config.resolveError(resolve, err);
+                    });
+            } else {
+                resolve({error: "پارامتر url نامعتبر است!"});
+            }
+        });
     }
 }

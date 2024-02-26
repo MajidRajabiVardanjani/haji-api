@@ -20,6 +20,7 @@ npm i haji-api --save
 
 ## لیست سرویس های در دسترس
 
+- **[آشپزی](#آشپزی)**
 - **[HTML to JSON](#HTML-to-JSON)**
 - **[وب اسکرپر](#وب-اسکرپر)**
 - **[جوک رندوم](#جوک-رندوم)**
@@ -101,6 +102,24 @@ npm i haji-api --save
 - **[تاریخ و ساعت](#تاریخ-و-ساعت)**
 - **[متن کتب معروف رندوم](#متن-کتب-معروف-رندوم)**
 - **[جمله انگیزشی رندوم](#جمله-انگیزشی-رندوم)**
+
+## آشپزی
+
+```javascript
+const {cooking} = require("haji-api/modules/fun");
+
+// جستجوی غذا از سایت rezim.ir
+cooking({
+    method: "search",
+    search: "سوخاری"
+}).then(console.log);
+
+// دریافت دستور پخت و طرز تهیه غذا
+cooking({
+    method: "info",
+    url: "https://rezim.ir/..."// لینک (url) غذا از متد search
+}).then(console.log);
+```
 
 ## HTML to JSON
 

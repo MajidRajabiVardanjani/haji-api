@@ -335,5 +335,17 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         });
-    }
+    },
+    weather: ({city}) => {
+        city = city ? city.toString().trim() : "تهران";
+        return new Promise(resolve => {
+            axios.get(`${config.api}/weather/?city=${city}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    },
 }

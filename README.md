@@ -18,8 +18,11 @@ npm i haji-api --save
 
 #### [پشتیبانی تلگرام (دکتر لینوکس)](https://t.me/DrLinuxDev)
 
+#### [پشتیبانی تلگرام (مهدی)](https://t.me/require_once)
+
 ## لیست سرویس های در دسترس
 
+- **[OCR](#OCR)**
 - **[آب و هوا](#آب-و-هوا)**
 - **[آشپزی](#آشپزی)**
 - **[HTML to JSON](#HTML-to-JSON)**
@@ -104,6 +107,17 @@ npm i haji-api --save
 - **[متن کتب معروف رندوم](#متن-کتب-معروف-رندوم)**
 - **[جمله انگیزشی رندوم](#جمله-انگیزشی-رندوم)**
 
+## OCR
+
+```javascript
+const {ocr} = require("haji-api/modules/image");
+
+// استخراج متن فارسی از عکس
+ocr({
+    imageUrl: "https://i.pinimg.com/736x/fb/24/2e/fb242e91771b3e392f12174ef7cfaf77.jpg"
+}).then(console.log);
+```
+
 ## آب و هوا
 
 ```javascript
@@ -112,7 +126,6 @@ const {weather} = require("haji-api/modules/tools");
 weather({
     city: "تهران"
 }).then(console.log);
-
 ```
 
 ## آشپزی

@@ -1,5 +1,6 @@
 const axios = require("axios");
 const config = require("./config");
+const {image} = require("../index");
 module.exports = {
     logo2: (name = "HA") => {
         name = name.substring(0, 2);
@@ -117,6 +118,23 @@ module.exports = {
                 .catch(err => {
                     config.resolveError(resolve, err);
                 });
+        })
+    },
+    ocr: ({imageUrl}) => {
+        imageUrl = imageUrl ? imageUrl : "";
+        return new Promise(resolve => {
+            if (imageUrl !== "") {
+                axios.get(`${config.apiV4}/api/tools/ocr/?url=${imageUrl}`)
+                    .then(r => {
+                        let text = r.data ? r.data.result ? r.data.result.text ? r.data.result.text.toString().trim() : "" : "" : "";
+                        resolve(text);
+                    })
+                    .catch(err => {
+                        config.resolveError(resolve, err);
+                    });
+            } else {
+                resolve({error: "imageUrl نامعتبر است!"});
+            }
         })
     }
 }

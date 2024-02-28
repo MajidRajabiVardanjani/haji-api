@@ -2,6 +2,7 @@ module.exports = {
     api: "https://haji-api.ir",
     apiV2: "https://api2.haji-api.ir",
     apiV3: "https://api3.haji-api.ir",
+    apiV4: "https://api4.haji-api.ir",
 
     resolveError: (resolve, err = null) => {
         let error = "";

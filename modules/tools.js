@@ -348,4 +348,33 @@ module.exports = {
                 });
         });
     },
+    religiousTimes: ({method, search, cityID}) => {
+        method = method ? method : "search";
+        search = search ? search.toString().trim() : "تبریز";
+        cityID = cityID ? cityID : "20_131";
+        let url = `${config.api}/owghat/`;
+        switch (method) {
+            case "provinces":
+                url = `${url}?q=show-list-provinces`;
+                break;
+            case "cities":
+                url = `${url}?q=show-list-cities`;
+                break;
+            case "cityID":
+                url = `${url}?q=${cityID}`;
+                break;
+            default:
+                url = `${url}?q=search&city=${search}`
+                break;
+        }
+        return new Promise(resolve => {
+            axios.get(url)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    }
 }

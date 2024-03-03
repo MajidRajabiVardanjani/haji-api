@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ## لیست سرویس های در دسترس
 
+- **[اوقات شرعی](#اوقات_شرعی)**
 - **[OCR](#OCR)**
 - **[آب و هوا](#آب-و-هوا)**
 - **[آشپزی](#آشپزی)**
@@ -106,6 +107,34 @@ npm i haji-api --save
 - **[تاریخ و ساعت](#تاریخ-و-ساعت)**
 - **[متن کتب معروف رندوم](#متن-کتب-معروف-رندوم)**
 - **[جمله انگیزشی رندوم](#جمله-انگیزشی-رندوم)**
+
+## اوقات شرعی
+
+```javascript
+const {religiousTimes} = require("haji-api/modules/tools");
+
+// لیست استان ها
+religiousTimes({
+    method: "provinces"
+}).then(console.log);
+
+// لیست شهر ها
+religiousTimes({
+    method: "cities"
+}).then(console.log);
+
+// اوقات شرعی بر اساس شناسه شهر
+religiousTimes({
+    method: "cityID",
+    cityID: "20_131" // از متد لیست شهر ها
+}).then(console.log);
+
+// اوقات شرعی بر اساس اسم شهر
+religiousTimes({
+    method: "search",
+    search: "تبریز"
+}).then(console.log);
+```
 
 ## OCR
 

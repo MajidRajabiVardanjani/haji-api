@@ -1,5 +1,5 @@
-import config from "./config";
-import axios from "axios";
+const config = require("./config");
+const axios = require("axios");
 
 const api = config.apiV3 + "/lic";
 

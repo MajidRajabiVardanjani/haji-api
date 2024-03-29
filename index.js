@@ -12,5 +12,6 @@ module.exports = {
     movie: require("./modules/movie"),
     shop: require("./modules/shop"),
     telegram: require("./modules/telegram"),
-    pinterest: require("./modules/pinterest")
+    pinterest: require("./modules/pinterest"),
+    License: require("./modules/License")
 }

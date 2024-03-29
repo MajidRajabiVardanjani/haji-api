@@ -20,6 +20,61 @@ npm i haji-api --save
 
 #### [پشتیبانی تلگرام (مهدی)](https://t.me/require_once)
 
+## لیست سرویس های اشتراکی
+
+#### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
+
+- **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## دانلودر اینستاگرام
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// دانلود با شناسایی خودکار
+license.instagramDownload({
+    method: "auto",
+    url: "لینک پست، ریلز، پروفایل، استوری، هایلات یا ..."
+}).then(console.log);
+
+// دانلود پروفایل
+license.instagramDownload({
+    method: "profile",
+    url: "لینک پروفایل یا نام کاربری"
+}).then(console.log);
+
+// دانلود پست یا ریلز
+license.instagramDownload({
+    method: "post",
+    url: "لینک پست یا ریلز"
+}).then(console.log);
+
+// دانلود استوری
+license.instagramDownload({
+    method: "story",
+    url: "لینک استوری"
+}).then(console.log);
+
+// دریافت استوری ها
+license.instagramDownload({
+    method: "stories",
+    id: "نام کاربری"
+}).then(console.log);
+
+// دریافت هایلایت ها
+license.instagramDownload({
+    method: "highlights",
+    id: "نام کاربری"
+}).then(console.log);
+
+// دانلود هایلایت بر اساس هایلایت آی دی
+license.instagramDownload({
+    method: "highlightById",
+    highlightId: "highlight:... از متد دریافت هایلایت ها"
+}).then(console.log);
+```
+
 ## لیست سرویس های در دسترس
 
 - **[اوقات شرعی](#اوقات-شرعی)**

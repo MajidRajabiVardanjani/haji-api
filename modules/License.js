@@ -47,4 +47,33 @@ module.exports = class License {
                 });
         })
     }
+
+    gpt({model = "gpt-3", question = "Hello"}) {
+        let furl = `${api}/gpt`;
+        switch (model) {
+            case "gpt-3.5-turbo":
+                furl = `${furl}/3-5/turbo`
+                break;
+            case "gpt-4":
+                furl = `${furl}/4`;
+                break;
+            case "gpt-4-web":
+                furl = `${furl}/4/web`;
+                break;
+            default :
+                furl = `${furl}/3`;
+                break;
+        }
+        furl = `${furl}?question=${encodeURI(question)}${this.lq}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    }
 }

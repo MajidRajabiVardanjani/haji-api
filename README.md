@@ -24,7 +24,21 @@ npm i haji-api --save
 
 #### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## GPT اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// چت جی پی تی
+license.gpt({
+    model: "gpt-3", // gpt-3 - gpt-3.5-turbo - gpt-4 - gpt-4-web
+    question: "Hello"
+}).then(console.log);
+```
 
 ## دانلودر اینستاگرام
 

@@ -76,4 +76,28 @@ module.exports = class License {
                 });
         })
     }
+
+    tts({text = "سلام", character = "DilaraNeural"}) {
+        return new Promise(resolve => {
+            axios.get(`${api}/tts?text=${text}&Character=${character}${this.lq}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    }
+
+    generateImage({model = "default", prompt = "A cute cat"}) {
+        return new Promise(resolve => {
+            axios.get(`${api}/ai/image/draw?model=${model}&p=${prompt}${this.lq}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    }
 }

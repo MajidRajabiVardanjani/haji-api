@@ -24,8 +24,37 @@ npm i haji-api --save
 
 #### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[ساخت عکس با هوش مصنوعی اشتراکی](#ساخت-عکس-با-هوش-مصنوعی-اشتراکی)**
+- **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+
+## ساخت عکس با هوش مصنوعی اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// متن به گفتار
+license.generateImage({
+    model: "default", // default - stablediffusion - dalle - pixart - prodia
+    prompt: "a cute cat"
+}).then(console.log);
+```
+
+## متن به گفتار اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// متن به گفتار
+license.tts({
+    character: "DilaraNeural", // DilaraNeural - FaridNeural
+    text: "سلام عزیزم! خوبی؟"
+}).then(console.log);
+```
 
 ## GPT اشتراکی
 

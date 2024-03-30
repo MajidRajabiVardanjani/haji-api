@@ -1,6 +1,6 @@
 {
   "name": "haji-api",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "description": "https://haji-api.ir وب سرویس های حاجی",
   "main": "index.js",
   "scripts": {

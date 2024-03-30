@@ -22,13 +22,104 @@ npm i haji-api --save
 
 ## لیست سرویس های اشتراکی
 
-#### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
+### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[تلگرام اشتراکی](#تلگرام-اشتراکی)**
+- **[یوتیوب اشتراکی](#یوتیوب-اشتراکی)**
+- **[لوگوساز اشتراکی](#لوگوساز-اشتراکی)**
+- **[گفتار به متن اشتراکی](#گفتار-به-متن-اشتراکی)**
 - **[ساخت عکس با هوش مصنوعی اشتراکی](#ساخت-عکس-با-هوش-مصنوعی-اشتراکی)**
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
 
+## تلگرام اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// اطلاعات کاربر
+license.telegram({
+    method: "user",
+    username: "MajidRajabiVardanjani"
+}).then(console.log);
+
+// اطلاعات کانال
+license.telegram({
+    method: "channel",
+    username: "HajiApi"
+}).then(console.log);
+
+// پراکسی
+license.telegram({
+    method: "proxies",
+    id: "آی دی کانال برای دریافت پراکسی ها (اختیاری)"
+}).then(console.log);
+
+// کانفیگ v2ray
+license.telegram({
+    method: "v2ray",
+    id: "آی دی کانال برای دریافت کانفیگ ها (اختیاری)",
+    name: "اسم دلخواه برای کانفیگ ها (تبلیغ اختیاری)"
+}).then(console.log);
+```
+
+## یوتیوب اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// جستجو در یوتیوب
+license.youtube({
+    method: "search",
+    search: "ویدیو"
+}).then(console.log);
+
+// دانلودر از یوتیوب
+license.youtube({
+    method: "download",
+    url: "لینک ویدیو"
+}).then(console.log);
+```
+
+## لوگوساز اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// لیست استایل ها
+license.ePhoto({
+    method: "styles"
+}).then(console.log);
+
+// ساخت لوگو رندوم
+license.ePhoto({
+    method: "random",
+    text: "HajiAPI"
+}).then(console.log);
+
+// ساخت لوگو سفارشی
+license.ePhoto({
+    method: "custom",
+    styleUrl: "از متد استایل ها",
+    text: "HajiAPI"
+}).then(console.log);
+```
+
+## گفتار به متن اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// گفتار به متن
+license.stt({
+    audioUrl: ".mp3|.ogg|.oga"
+}).then(console.log);
+```
 
 ## ساخت عکس با هوش مصنوعی اشتراکی
 

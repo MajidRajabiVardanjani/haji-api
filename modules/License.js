@@ -100,4 +100,95 @@ module.exports = class License {
                 });
         })
     }
+
+    stt({audioUrl = ""}) {
+        return new Promise(resolve => {
+            if (audioUrl.includes(".mp3") || audioUrl.includes(".ogg") | audioUrl.includes(".oga")) {
+                axios.get(`${api}/ai/stt?url=${audioUrl}${this.lq}`)
+                    .then(r => {
+                        resolve(r.data.result);
+                    })
+                    .catch(err => {
+                        config.resolveError(resolve, err);
+                    });
+            } else {
+                resolve({error: "فرمت فایل صوتی باید یکی از این موارد باشد: mp3 - ogg - oga"});
+            }
+        })
+    }
+
+    ePhoto({method = "styles", styleUrl = "", text = ""}) {
+        let furl = `${api}/ai/ephoto`;
+
+        switch (method) {
+            case "random":
+                furl = `${furl}/random?text=${text}`
+                break;
+            case "custom":
+                furl = `${furl}/make?text=${text}&url=${styleUrl}`
+                break;
+            default:
+                furl = `${furl}/random?text=${text}`
+                break;
+        }
+
+        furl = `${furl}${this.lq}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    }
+
+    youtube({method = "search", search = "", url = ""}) {
+        let furl = `${config.api}/youtube`;
+        if (method === "search") {
+            furl = `${furl}/search?s=${search}`;
+        } else {
+            furl = `${furl}/download?v=${url}`;
+        }
+        furl = `${furl}${this.lq}`;
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    }
+
+    telegram({method = "user", username = "", id = "", name = ""}) {
+        let furl = `${api}/telegram`;
+        switch (method) {
+            case "channel":
+                furl = `${furl}/channel?username=${username}`;
+                break;
+            case "proxies":
+                furl = `${furl}/proxies?id=${id}`;
+                break;
+            case "v2ray":
+                furl = `${furl}/v2ray?id=${id}&name=${name}`;
+                break;
+            default:
+                furl = `${furl}/user?username=${username}`;
+                break;
+        }
+        furl = `${furl}${this.lq}`;
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    }
 }

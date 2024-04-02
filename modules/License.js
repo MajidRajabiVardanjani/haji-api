@@ -191,4 +191,18 @@ module.exports = class License {
                 });
         })
     }
+
+    googleTranslate({text = "سلام", to = "en"}) {
+        to = to ? to.toString().trim().toLowerCase() : "en";
+        return new Promise(resolve => {
+            axios.get(`${api}/tools/translate?q=${encodeURI(text)}&to=${to}${this.lq}`)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+
+    }
 }

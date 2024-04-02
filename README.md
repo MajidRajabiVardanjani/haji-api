@@ -35,6 +35,18 @@ npm i haji-api --save
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
 
+## فرهنگ نام ها اشتراکی
+
+```javascript
+const License = require("haji-api/modules/License");
+let license = new License("your_license");
+
+// ترجمه گوگل
+license.nameDictionary({
+    name: "مجید"
+}).then(console.log);
+```
+
 ## مترجم گوگل اشتراکی
 
 ```javascript

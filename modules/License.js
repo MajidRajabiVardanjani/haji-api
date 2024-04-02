@@ -205,4 +205,17 @@ module.exports = class License {
         })
 
     }
+
+    nameDictionary({name = "مجید"}) {
+        name = name ? name.toString().trim() : "";
+        return new Promise(resolve => {
+            axios.get(`${api}/lic/tools/dictionary/names?name=${encodeURI(name)}${this.lq}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
+    }
 }

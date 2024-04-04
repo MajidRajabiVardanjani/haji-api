@@ -26,6 +26,8 @@
     "llama",
     "v2ray",
     "mtproto",
+    "Pixart",
+    "Emi",
     "Stable Diffusion",
     "Dall-E",
     "DallE",
@@ -37,7 +39,9 @@
     "متن به گفتار",
     "گفتار به متن",
     "TTS",
-    "STT"
+    "STT",
+    "جی پی تی",
+    "جیپیتی"
   ],
   "author": "Majid Rajabi Vardanjani",
   "license": "ISC",

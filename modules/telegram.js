@@ -3,11 +3,11 @@ const config = require("./config");
 const {resolveError} = require("./config");
 
 module.exports = {
-    user: ({username}) => {
+    user: ({username, license}) => {
         username = username ? username.toString().trim() : "";
 
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/telegram/user?username=${username}`)
+            axios.get(`${config.apiV3}/majid/telegram/user?username=${username}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -16,11 +16,11 @@ module.exports = {
                 });
         });
     },
-    channel: ({username}) => {
+    channel: ({username, license}) => {
         username = username ? username.toString().trim() : "";
 
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/telegram/channel?username=${username}`)
+            axios.get(`${config.apiV3}/majid/telegram/channel?username=${username}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -30,11 +30,11 @@ module.exports = {
         });
     },
 
-    proxies: ({username}) => {
+    proxies: ({username, license}) => {
         username = username ? username.toString().trim() : "";
-        let furl = `${config.apiV3}/majid/telegram/proxies`;
+        let furl = `${config.apiV3}/majid/telegram/proxies?license=${license}`;
         if (username !== "") {
-            furl = `${furl}?id=${username}`;
+            furl = `${furl}&id=${username}`;
         }
         return new Promise(resolve => {
             axios.get(furl)
@@ -46,11 +46,11 @@ module.exports = {
                 });
         });
     },
-    v2ray: ({username, configName}) => {
+    v2ray: ({username, configName, license}) => {
         username = username ? username.toString().trim() : "";
         configName = configName ? configName.toString().trim() : "https://t.me/HajiApi";
 
-        let furl = `${config.apiV3}/majid/telegram/v2ray?name=${configName}`;
+        let furl = `${config.apiV3}/majid/telegram/v2ray?name=${configName}&license=${license}`;
         if (username !== "") {
             furl = `${furl}&id=${username}`;
         }

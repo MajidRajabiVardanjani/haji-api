@@ -2,9 +2,9 @@ const config = require("./config");
 const axios = require("axios");
 
 module.exports = {
-    dateTime: () => {
+    dateTime: (license) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/date/`)
+            axios.get(`${config.api}/date/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -13,7 +13,7 @@ module.exports = {
                 });
         });
     },
-    fakeMail: (method = "getNewMail", email = null) => {
+    fakeMail: (method = "getNewMail", email = null, license) => {
         return new Promise(resolve => {
             let url = `${config.api}/email/`
             switch (method) {
@@ -24,6 +24,7 @@ module.exports = {
                     url = `${url}?method=${method}`;
                     break;
             }
+            url = `${url}&license=${license}`
             axios.get(url)
                 .then(r => {
                     if (method === "getNewMail") {
@@ -41,13 +42,13 @@ module.exports = {
                 });
         });
     },
-    telegramProxies1: (channel = "ProxyMTProto") => {
+    telegramProxies1: (channel = "ProxyMTProto", license = "") => {
         channel = channel.replace("@", "").replace("https://t.me/", "");
         if (channel === "") {
             channel = "ProxyMTProto"
         }
         return new Promise(resolve => {
-            axios.get(`${config.api}/proxy/?channel=${channel}`)
+            axios.get(`${config.api}/proxy/?channel=${channel}&license=${license}`)
                 .then(r => {
                     resolve(r.data.proxies);
                 })
@@ -56,9 +57,9 @@ module.exports = {
                 });
         });
     },
-    zekr: () => {
+    zekr: (license) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/zekr/`)
+            axios.get(`${config.api}/zekr/?license=${license}`)
                 .then(r => {
                     resolve(r.data.Result);
                 })
@@ -67,9 +68,9 @@ module.exports = {
                 });
         });
     },
-    creditCard: ({bin, year, month, limit}) => {
+    creditCard: ({bin, year, month, limit, license}) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/CreditCard/?bin=${bin}&range=${limit}&year=${year}&month=${month}`)
+            axios.get(`${config.api}/CreditCard/?bin=${bin}&range=${limit}&year=${year}&month=${month}&license=${license}`)
                 .then(r => {
                     resolve(r.data.Result);
                 })
@@ -78,9 +79,9 @@ module.exports = {
                 });
         });
     },
-    ping: ({domainOrIP, port}) => {
+    ping: ({domainOrIP, port, license}) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/ping/?port=${port}&server=${domainOrIP}`)
+            axios.get(`${config.api}/ping/?port=${port}&server=${domainOrIP}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -89,13 +90,13 @@ module.exports = {
                 });
         });
     },
-    googleTranslate1: ({from, to, text}) => {
+    googleTranslate1: ({from, to, text, license}) => {
         from = from ? from : "fa";
         to = to ? to : "en";
         text = text ? text.toString().trim() : "سلام دنیا!";
         text = encodeURI(text);
         return new Promise(resolve => {
-            axios.get(`${config.api}/translate/?from=${from}&to=${to}&text=${text}`)
+            axios.get(`${config.api}/translate/?from=${from}&to=${to}&text=${text}&license=${license}`)
                 .then(r => {
                     let result = text;
                     try {
@@ -110,7 +111,7 @@ module.exports = {
         });
 
     },
-    QRCode: ({text, size}) => {
+    QRCode: ({text, size, license}) => {
         text = text ? text.toString() : "Text";
         size = size ? !isNaN(Number(size)) ? Number(size) : 12 : 12;
         if (size > 12) {
@@ -119,7 +120,7 @@ module.exports = {
             size = 1;
         }
         return new Promise(resolve => {
-            axios.get(`${config.api}/QRcode/?data=${text}&size=${size}`,
+            axios.get(`${config.api}/QRcode/?data=${text}&size=${size}&license=${license}`,
                 {
                     responseType: 'arraybuffer'
                 })
@@ -151,9 +152,9 @@ module.exports = {
         }
         return result;
     },
-    pythonHost: () => {
+    pythonHost: (license) => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV2}/host/`)
+            axios.get(`${config.apiV2}/host/?license=${license}`)
                 .then(r => {
                     resolve(r.data.result ? r.data.result.answer ? r.data.result.answer : r.data : null);
                 })
@@ -162,9 +163,9 @@ module.exports = {
                 });
         });
     },
-    shorLink: ({url}) => {
+    shorLink: ({url, license}) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/short/?url=${url}`)
+            axios.get(`${config.api}/short/?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result ? r.data.result.short_url ? r.data.result.short_url : r.data : null);
                 })
@@ -173,9 +174,9 @@ module.exports = {
                 });
         });
     },
-    shorLink2: ({url}) => {
+    shorLink2: ({url, license}) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/short-link/?url=${url}`)
+            axios.get(`${config.api}/short-link/?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -184,11 +185,11 @@ module.exports = {
                 });
         });
     },
-    nationalCode: ({text}) => {
+    nationalCode: ({text, license}) => {
         text = text ? text : "";
         return new Promise(resolve => {
             return new Promise(resolve => {
-                axios.get(`${config.api}/estelam/codemeli/?text=${text}`)
+                axios.get(`${config.api}/estelam/codemeli/?text=${text}&license=${license}`)
                     .then(r => {
                         resolve(r.data.result);
                     })
@@ -198,7 +199,7 @@ module.exports = {
             });
         })
     },
-    darooyab: ({search, url}) => {
+    darooyab: ({search, url, license}) => {
         search = search ? search : "";
         url = url ? url : "";
         let furl = `${config.apiV3}/majid/darooyab/search?search=${search}`;
@@ -215,10 +216,10 @@ module.exports = {
                 });
         });
     },
-    googleSpellCorrection: ({text}) => {
+    googleSpellCorrection: ({text, license}) => {
         text = text ? text.toString() : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/spell?q=${text}`)
+            axios.get(`${config.apiV3}/majid/tools/spell?q=${text}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -227,12 +228,12 @@ module.exports = {
                 });
         });
     },
-    googleTranslate2: ({to, text}) => {
+    googleTranslate2: ({to, text, license}) => {
         to = to ? to : "en";
         text = text ? text.toString().trim() : "سلام دنیا!";
         text = encodeURI(text);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/translate?q=${text}&to=${to}`)
+            axios.get(`${config.apiV3}/majid/tools/translate?q=${text}&to=${to}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -242,11 +243,11 @@ module.exports = {
         });
 
     },
-    farsroid: ({appName}) => {
+    farsroid: ({appName, license}) => {
         appName = appName ? appName.toString().trim() : "سلام دنیا!";
         appName = encodeURI(appName);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/farsroid?s=${appName}`)
+            axios.get(`${config.apiV3}/majid/tools/farsroid?s=${appName}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -256,10 +257,10 @@ module.exports = {
         });
 
     },
-    imageMetadata: ({imageUrl}) => {
+    imageMetadata: ({imageUrl, license}) => {
         imageUrl = imageUrl ? imageUrl : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/image/metadata?url=${imageUrl}`)
+            axios.get(`${config.apiV3}/majid/tools/image/metadata?url=${imageUrl}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -268,11 +269,11 @@ module.exports = {
                 });
         });
     },
-    wikipedia: ({search}) => {
+    wikipedia: ({search, license}) => {
         search = search ? search : "";
         search = encodeURI(search);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/wikipedia?s=${search}`)
+            axios.get(`${config.apiV3}/majid/tools/wikipedia?s=${search}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -281,10 +282,10 @@ module.exports = {
                 });
         });
     },
-    linkPreview: ({link}) => {
+    linkPreview: ({link, license}) => {
         link = link ? link : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/link/preview?url=${link}`)
+            axios.get(`${config.apiV3}/majid/tools/link/preview?url=${link}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -293,10 +294,10 @@ module.exports = {
                 });
         });
     },
-    webScraper: ({url}) => {
+    webScraper: ({url, license}) => {
         url = url ? url : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/scraper?url=${url}`)
+            axios.get(`${config.apiV3}/majid/tools/scraper?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -305,10 +306,10 @@ module.exports = {
                 });
         });
     },
-    webScraperPro: ({url}) => {
+    webScraperPro: ({url, license}) => {
         url = url ? url : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/scraper/pro?url=${url}`)
+            axios.get(`${config.apiV3}/majid/tools/scraper/pro?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -317,13 +318,13 @@ module.exports = {
                 });
         });
     },
-    html2json: ({html}) => {
+    html2json: ({html, license}) => {
         html = html ? html : "<div>سلام دنیا!</div>";
         let params = new URLSearchParams();
         params.append('html', html);
 
         return new Promise(resolve => {
-            axios.post(`${config.apiV3}/majid/tools/html2json`, html, {
+            axios.post(`${config.apiV3}/majid/tools/html2json?license=${license}`, html, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
@@ -336,10 +337,10 @@ module.exports = {
                 });
         });
     },
-    weather: ({city}) => {
+    weather: ({city, license}) => {
         city = city ? city.toString().trim() : "تهران";
         return new Promise(resolve => {
-            axios.get(`${config.api}/weather/?city=${city}`)
+            axios.get(`${config.api}/weather/?city=${city}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -348,7 +349,7 @@ module.exports = {
                 });
         });
     },
-    religiousTimes: ({method, search, cityID}) => {
+    religiousTimes: ({method, search, cityID, license}) => {
         method = method ? method : "search";
         search = search ? search.toString().trim() : "تبریز";
         cityID = cityID ? cityID : "20_131";
@@ -367,6 +368,7 @@ module.exports = {
                 url = `${url}?q=search&city=${search}`
                 break;
         }
+        url = `${url}&license=${license}`
         return new Promise(resolve => {
             axios.get(url)
                 .then(r => {

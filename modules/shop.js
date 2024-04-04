@@ -2,10 +2,10 @@ const config = require("./config");
 const axios = require("axios");
 
 module.exports = {
-    digikalaSearch: ({search}) => {
+    digikalaSearch: ({search, license}) => {
         search = search ? search.toString().trim() : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/dk/search?search=${encodeURI(search)}`)
+            axios.get(`${config.apiV3}/majid/dk/search?search=${encodeURI(search)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -15,10 +15,10 @@ module.exports = {
         });
     },
 
-    digikalaInfo: ({productId}) => {
+    digikalaInfo: ({productId, license}) => {
         productId = productId ? productId.toString().trim() : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/dk/product?id=${productId}`)
+            axios.get(`${config.apiV3}/majid/dk/product?id=${productId}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -28,10 +28,10 @@ module.exports = {
         });
     },
 
-    torob: ({search}) => {
+    torob: ({search, license}) => {
         search = search ? search.toString().trim() : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/torob/search?s=${encodeURI(search)}`)
+            axios.get(`${config.apiV3}/majid/torob/search?s=${encodeURI(search)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })

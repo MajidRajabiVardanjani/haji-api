@@ -2,7 +2,7 @@ const config = require("./config");
 const axios = require("axios");
 
 module.exports = {
-    melobit: ({method, search, id}) => {
+    melobit: ({method, search, id, license}) => {
         method = method ? method : "search";
         search = search ? search.toString().trim() : "آهنگ";
         id = id ? id : "";
@@ -18,6 +18,7 @@ module.exports = {
                             url = url + `&t=${id}`;
                             break;
                     }
+                    url = `${url}&license=${license}`
                     axios.get(url)
                         .then(r => {
                             switch (method) {
@@ -47,11 +48,12 @@ module.exports = {
             }
 
         });
-    }, soundCloudDownload: ({url}) => {
+    },
+    soundCloudDownload: ({url, license}) => {
         url = url ? url : "";
         return new Promise(resolve => {
             if (url.includes("soundcloud.com")) {
-                axios.get(`${config.api}/SoundCloud/?url=${url}`)
+                axios.get(`${config.api}/SoundCloud/?url=${url}&license=${license}`)
                     .then(r => {
                         resolve(r.data.result);
                     })
@@ -64,10 +66,11 @@ module.exports = {
                 });
             }
         })
-    }, shazam: ({url}) => {
+    },
+    shazam: ({url, license}) => {
         url = url ? url : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/shazam?url=${url}`)
+            axios.get(`${config.apiV3}/majid/tools/shazam?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -76,10 +79,10 @@ module.exports = {
                 });
         })
     },
-    musicVIP: ({search}) => {
+    musicVIP: ({search, license}) => {
         search = search ? search.toString().trim() : "آهنگ";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/music/vip?s=${encodeURI(search)}`)
+            axios.get(`${config.apiV3}/majid/music/vip?s=${encodeURI(search)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -88,7 +91,7 @@ module.exports = {
                 });
         })
     },
-    spotify: ({method, search, url}) => {
+    spotify: ({method, search, url, license}) => {
         url = url ? url : "";
         search = search ? search.toString().trim() : "آهنگ";
         method = method ? method : "search";
@@ -100,6 +103,7 @@ module.exports = {
         } else {
             furl = `${furl}/search?s=${encodeURI(search)}`;
         }
+        furl = `${furl}&license=${license}`
 
         return new Promise(resolve => {
             axios.get(furl)

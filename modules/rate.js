@@ -2,9 +2,9 @@ const axios = require("axios");
 const config = require("./config");
 
 module.exports = {
-    cryptoCurrency: () => {
+    cryptoCurrency: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/arzDigital/`)
+            axios.get(`${config.api}/arzDigital/?license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -13,9 +13,9 @@ module.exports = {
                 });
         });
     },
-    exchangeRate: () => {
+    exchangeRate: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/exchange-rate/`)
+            axios.get(`${config.api}/exchange-rate/?license=${license}`)
                 .then(r => {
                     resolve(r.data.Results);
                 })
@@ -24,10 +24,10 @@ module.exports = {
                 });
         });
     },
-    khodro: ({search}) => {
+    khodro: ({search, license}) => {
         search = search ? search.toString().trim() : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/car/price?name=${encodeURI(search)}`)
+            axios.get(`${config.apiV3}/majid/tools/car/price?name=${encodeURI(search)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -37,9 +37,9 @@ module.exports = {
         });
 
     },
-    nobitex: ({}) => {
+    nobitex: ({license = ""}) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/nobitex/`)
+            axios.get(`${config.api}/nobitex/?license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })

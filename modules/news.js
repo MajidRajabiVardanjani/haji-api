@@ -2,9 +2,9 @@ const config = require("./config");
 const axios = require("axios");
 
 module.exports = {
-    irna: () => {
+    irna: (license) => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/irna/`)
+            axios.get(`${config.api}/irna/?license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -13,7 +13,7 @@ module.exports = {
                 });
         });
     },
-    football: ({method}) => {
+    football: ({method, license}) => {
         method = method ? method : "news";
         let url = `${config.api}/fotbali/`
         switch (method) {
@@ -24,6 +24,8 @@ module.exports = {
                 url = `${url}?get=News`
                 break;
         }
+        url = `${url}&license=${license}`;
+
         return new Promise(resolve => {
             axios.get(url)
                 .then(r => {
@@ -35,18 +37,18 @@ module.exports = {
         })
 
     },
-    varzesh3Video: ({method, url}) => {
+    varzesh3Video: ({method, url, license}) => {
         method = method ? method : "main";
         let furl = `${config.apiV3}/majid/varzesh3/video`;
         switch (method) {
             case "category":
-                furl = `${furl}/category?url=${url}`;
+                furl = `${furl}/category?url=${url}&license=${license}`;
                 break;
             case "details":
-                furl = `${furl}/details?url=${url}`;
+                furl = `${furl}/details?url=${url}&license=${license}`;
                 break;
             default:
-                furl = `${furl}/main`;
+                furl = `${furl}/main?license=${license}`;
                 break;
         }
         return new Promise(resolve => {
@@ -59,13 +61,13 @@ module.exports = {
                 });
         })
     },
-    eghtesadNews: ({method, url}) => {
+    eghtesadNews: ({method, url, license}) => {
         method = method ? method : "main";
         let furl = `${config.apiV3}/majid/eghtesadnews`;
         if (method === "details") {
-            furl = `${furl}/details?url=${url}`;
+            furl = `${furl}/details?url=${url}&license=${license}`;
         } else {
-            furl = `${furl}/main`;
+            furl = `${furl}/main?license=${license}`;
         }
         return new Promise(resolve => {
             axios.get(furl)

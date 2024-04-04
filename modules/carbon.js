@@ -2,9 +2,9 @@ const config = require("./config");
 const axios = require("axios");
 
 module.exports = {
-    carbonOptions: () => {
+    carbonOptions: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/carbon/options`)
+            axios.get(`${config.apiV3}/majid/tools/carbon/options?license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -13,7 +13,7 @@ module.exports = {
                 });
         })
     },
-    carbon: ({code, lang, background, theme, font, line, firstLine, watermark}) => {
+    carbon: ({code, lang, background, theme, font, line, firstLine, watermark, license = ""}) => {
         code = code ? code : "";
         let params = new URLSearchParams();
         params.append('code', code);
@@ -40,9 +40,9 @@ module.exports = {
         }
         return new Promise(resolve => {
             if (code !== "") {
-                let url = `${config.apiV3}/majid/tools/carbon/default`;
+                let url = `${config.apiV3}/majid/tools/carbon/default?license=${license}`;
                 if (lang || background || theme || font || line || firstLine || watermark) {
-                    url = `${config.apiV3}/majid/tools/carbon`;
+                    url = `${config.apiV3}/majid/tools/carbon?license=${license}`;
                 }
                 axios.post(url, params, {headers: {"Content-Type": "application/x-www-form-urlencoded"}})
                     .then(r => {

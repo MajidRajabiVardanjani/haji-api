@@ -2,9 +2,9 @@ const config = require("./config");
 const axios = require("axios");
 
 module.exports = {
-    motivational: () => {
+    motivational: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/angizeshi/`)
+            axios.get(`${config.api}/angizeshi/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -13,9 +13,9 @@ module.exports = {
                 });
         });
     },
-    famousBook: () => {
+    famousBook: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/ketab/`)
+            axios.get(`${config.api}/ketab/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -24,9 +24,9 @@ module.exports = {
                 });
         });
     },
-    photography: () => {
+    photography: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/photography/`)
+            axios.get(`${config.api}/photography/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -35,9 +35,9 @@ module.exports = {
                 });
         });
     },
-    heavy: () => {
+    heavy: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/gang/`)
+            axios.get(`${config.api}/gang/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -46,9 +46,9 @@ module.exports = {
                 });
         });
     },
-    deghatKardin: () => {
+    deghatKardin: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/deghat/`)
+            axios.get(`${config.api}/deghat/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -57,9 +57,9 @@ module.exports = {
                 });
         });
     },
-    font: (text = "HajiAPI", design = false) => {
+    font: (text = "HajiAPI", design = false, license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/font/?design=${design.toString()}&text=${text}`)
+            axios.get(`${config.api}/font/?design=${design.toString()}&text=${text}&license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -68,9 +68,9 @@ module.exports = {
                 });
         });
     },
-    sokhangoo: (question = "سلام") => {
+    sokhangoo: (question = "سلام", license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/sokhan/?text=${question}`)
+            axios.get(`${config.api}/sokhan/?text=${question}&license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -79,12 +79,12 @@ module.exports = {
                 });
         });
     },
-    bmi: ({weight, height}) => {
+    bmi: ({weight, height, license = ""}) => {
         weight = weight ? !isNaN(Number(weight)) ? Number(weight) : 75 : 75;
         height = height ? !isNaN(Number(height)) ? Number(height) : 180 : 180;
 
         return new Promise(resolve => {
-            axios.get(`${config.api}/estelam/bmi/?weight=$${weight}&height=${height}`)
+            axios.get(`${config.api}/estelam/bmi/?weight=$${weight}&height=${height}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -93,9 +93,9 @@ module.exports = {
                 });
         });
     },
-    birthdate: ({y, m, d}) => {
+    birthdate: ({y, m, d, license = ""}) => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/birthdate?year=${y}&month=${m}&day=${d}`)
+            axios.get(`${config.apiV3}/majid/tools/birthdate?year=${y}&month=${m}&day=${d}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -104,9 +104,9 @@ module.exports = {
                 });
         });
     },
-    fal: () => {
+    fal: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/fal/hafez`)
+            axios.get(`${config.apiV3}/majid/tools/fal/hafez?license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -115,10 +115,10 @@ module.exports = {
                 });
         });
     },
-    nameDictionary: ({name}) => {
+    nameDictionary: ({name, license = ""}) => {
         name = name ? name.toString().trim() : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/dictionary/names?name=${encodeURI(name)}`)
+            axios.get(`${config.apiV3}/majid/tools/dictionary/names?name=${encodeURI(name)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -127,9 +127,9 @@ module.exports = {
                 });
         });
     },
-    danestani: () => {
+    danestani: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/danestani/`)
+            axios.get(`${config.api}/danestani/?license=${license}`)
                 .then(r => {
                     resolve(r.data);
                 })
@@ -138,9 +138,9 @@ module.exports = {
                 });
         });
     },
-    falPhoto: () => {
+    falPhoto: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/fal/hafez/photo`,
+            axios.get(`${config.apiV3}/majid/tools/fal/hafez/photo?license=${license}`,
                 {
                     responseType: 'arraybuffer'
                 })
@@ -152,9 +152,9 @@ module.exports = {
                 });
         });
     },
-    joke: () => {
+    joke: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/jok/random`)
+            axios.get(`${config.apiV3}/majid/tools/jok/random?license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -163,7 +163,7 @@ module.exports = {
                 });
         });
     },
-    cooking: ({method, search, url}) => {
+    cooking: ({method, search, url, license = ""}) => {
         method = method ? method : "search";
         search = search ? search.toString().trim() : "";
         url = url ? url : "";
@@ -174,7 +174,7 @@ module.exports = {
         } else {
             furl = `${furl}/search?s=${encodeURI(search)}`;
         }
-
+        furl = `${furl}&license=${license}`
         return new Promise(resolve => {
             if (url.includes("https://rezim.ir")) {
                 axios.get(furl)

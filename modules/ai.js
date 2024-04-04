@@ -4,7 +4,7 @@ const {googleTranslate1} = require("./tools");
 const {image} = require("../index");
 
 module.exports = {
-    lexicaSearch: async ({prompt}) => {
+    lexicaSearch: async ({prompt, license = ""}) => {
         prompt = prompt ? prompt.toString().trim() : "a beautiful flower";
 
         if (config.isFa(prompt)) {
@@ -24,7 +24,7 @@ module.exports = {
         }
 
         return await new Promise(resolve => {
-            axios.get(`${config.api}/prompts/?text=${encodeURI(prompt)}`)
+            axios.get(`${config.api}/prompts/?text=${encodeURI(prompt)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -33,12 +33,12 @@ module.exports = {
                 });
         })
     },
-    removeBackground1: ({imageUrl}) => {
+    removeBackground1: ({imageUrl, license = ""}) => {
         imageUrl = imageUrl ? imageUrl.includes(".") ? imageUrl : "" : "";
 
         return new Promise(resolve => {
             if (imageUrl !== "") {
-                axios.get(`${config.apiV2}/gpt/removebg/?url=${imageUrl}`)
+                axios.get(`${config.apiV2}/gpt/removebg/?url=${imageUrl}&license=${license}`)
                     .then(r => {
                         let {result} = r.data;
                         resolve(result ? result.answer ? result.answer : result : null);
@@ -53,7 +53,7 @@ module.exports = {
             }
         })
     },
-    gpt: ({model, question}) => {
+    gpt: ({model, question, license = ""}) => {
         model = model ? model : "GPT-3.5";
         question = question ? question.toString().trim() : "سلام خوبی؟";
 
@@ -77,6 +77,7 @@ module.exports = {
                 url = `${url}/3/free?q=${question}`;
                 break;
         }
+        url = `${url}&license=${license}`;
 
         return new Promise(resolve => {
             axios.get(url)
@@ -88,11 +89,11 @@ module.exports = {
                 });
         });
     },
-    tts: ({text, character}) => {
+    tts: ({text, character, license = ""}) => {
         text = text ? text.toString().trim() : "سلام خوبی؟";
         character = character ? character === "FaridNeural" ? "FaridNeural" : "DilaraNeural" : "DilaraNeural";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/tts?text=${text}&Character=${character}`)
+            axios.get(`${config.apiV3}/majid/tools/tts?text=${text}&Character=${character}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -101,10 +102,10 @@ module.exports = {
                 });
         })
     },
-    imageSearch: ({prompt}) => {
+    imageSearch: ({prompt, license = ""}) => {
         prompt = prompt ? prompt.toString().trim() : "a beautiful flower";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/image/create?p=${encodeURI(prompt)}`)
+            axios.get(`${config.apiV3}/majid/ai/image/create?p=${encodeURI(prompt)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -113,22 +114,23 @@ module.exports = {
                 });
         })
     },
-    ephoto360: ({method, url, text}) => {
+    ephoto360: ({method, url, text, license = ""}) => {
         text = text ? text.toString().trim() : "Haji API";
         method = method ? method : "random";
         url = url ? url : "";
         let furl = `${config.apiV3}/majid/ai/ephoto`;
         switch (method) {
             case "custom":
-                furl = `${furl}/make?text=${text}&url=${url}`;
+                furl = `${furl}/make?text=${text}&url=${url}&license=${license}`;
                 break;
             case "styles":
-                furl = `${furl}/styles`;
+                furl = `${furl}/styles?license=${license}`;
                 break;
             default:
-                furl = `${furl}/random?text=${text}`;
+                furl = `${furl}/random?text=${text}&license=${license}`;
                 break;
         }
+
 
         return new Promise(resolve => {
             axios.get(furl)
@@ -140,10 +142,10 @@ module.exports = {
                 });
         })
     },
-    drawImage: ({prompt}) => {
+    drawImage: ({prompt, license = ""}) => {
         prompt = prompt ? prompt.toString().trim() : "a beautiful flower";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/image/draw?p=${encodeURI(prompt)}`)
+            axios.get(`${config.apiV3}/majid/ai/image/draw?p=${encodeURI(prompt)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -152,10 +154,10 @@ module.exports = {
                 });
         })
     },
-    dallE: ({prompt}) => {
+    dallE: ({prompt, license = ""}) => {
         prompt = prompt ? prompt.toString().trim() : "a beautiful flower";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/image/draw/dalle?p=${encodeURI(prompt)}`)
+            axios.get(`${config.apiV3}/majid/ai/image/draw/dalle?p=${encodeURI(prompt)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -164,10 +166,10 @@ module.exports = {
                 });
         })
     },
-    stt: ({url}) => {
+    stt: ({url, license = ""}) => {
         url = url ? url : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/stt?url=${url}`)
+            axios.get(`${config.apiV3}/majid/ai/stt?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -176,10 +178,10 @@ module.exports = {
                 });
         })
     },
-    imageUpscale: ({imageUrl}) => {
+    imageUpscale: ({imageUrl, license = ""}) => {
         imageUrl = imageUrl ? imageUrl : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/image/upscale?url=${imageUrl}`)
+            axios.get(`${config.apiV3}/majid/tools/image/upscale?url=${imageUrl}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -188,10 +190,10 @@ module.exports = {
                 });
         })
     },
-    removeBackground2: ({imageUrl}) => {
+    removeBackground2: ({imageUrl, license = ""}) => {
         imageUrl = imageUrl ? imageUrl : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/image/remove/background?url=${imageUrl}`)
+            axios.get(`${config.apiV3}/majid/tools/image/remove/background?url=${imageUrl}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -200,11 +202,11 @@ module.exports = {
                 });
         })
     },
-    llama2: ({question}) => {
+    llama2: ({question, license = ""}) => {
         question = question ? question.toString().trim() : "Hi";
 
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/llama2?q=${encodeURI(question)}`)
+            axios.get(`${config.apiV3}/majid/llama2?q=${encodeURI(question)}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -213,12 +215,12 @@ module.exports = {
                 });
         });
     },
-    photoToAnimeAI: ({imageUrl, prompt}) => {
+    photoToAnimeAI: ({imageUrl, prompt, license = ""}) => {
         imageUrl = imageUrl ? imageUrl : "";
         prompt = prompt ? prompt.toString().trim() : "a boy";
         prompt = encodeURI(prompt);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/photo/anime?image=${imageUrl}&prompt=${prompt}`)
+            axios.get(`${config.apiV3}/majid/ai/photo/anime?image=${imageUrl}&prompt=${prompt}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })

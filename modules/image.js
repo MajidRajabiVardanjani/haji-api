@@ -2,10 +2,10 @@ const axios = require("axios");
 const config = require("./config");
 const {image} = require("../index");
 module.exports = {
-    logo2: (name = "HA") => {
+    logo2: (name = "HA", license = "") => {
         name = name.substring(0, 2);
         return new Promise(resolve => {
-            axios.get(`${config.api}/logo/?type=url&name=${name}`)
+            axios.get(`${config.api}/logo/?type=url&name=${name}&license=${license}`)
                 .then(r => {
                     resolve(r.data.results);
                 })
@@ -14,12 +14,12 @@ module.exports = {
                 });
         });
     },
-    wallpaper: ({search, page}) => {
+    wallpaper: ({search, page, license = ""}) => {
         search = search ? search.toString().trim() : "";
         page = page ? !isNaN(Number(page)) ? Number(page) : 1 : 1;
         name = name.substring(0, 2);
         return new Promise(resolve => {
-            axios.get(`${config.api}/wallpaper/?search=${encodeURI(search)}&number=${page}`)
+            axios.get(`${config.api}/wallpaper/?search=${encodeURI(search)}&number=${page}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -28,9 +28,9 @@ module.exports = {
                 });
         });
     },
-    motivationalPhoto: () => {
+    motivationalPhoto: (license = "") => {
         return new Promise(resolve => {
-            axios.get(`${config.api}/photoangizeshi/`, {
+            axios.get(`${config.api}/photoangizeshi/?license=${license}`, {
                 responseType: 'arraybuffer'
             })
                 .then(r => {
@@ -41,11 +41,11 @@ module.exports = {
                 });
         });
     },
-    searchImage: ({search}) => {
+    searchImage: ({search, license = ""}) => {
         search = search ? search.toString().trim() : "عکس نوشته";
         search = encodeURI(search);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/image/search?q=${search}`)
+            axios.get(`${config.apiV3}/majid/tools/image/search?q=${search}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -55,10 +55,10 @@ module.exports = {
         });
 
     },
-    photoToCartoon: ({url}) => {
+    photoToCartoon: ({url, license}) => {
         url = url ? url : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/image/cartoon?url=${url}`)
+            axios.get(`${config.apiV3}/majid/ai/image/cartoon?url=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -67,11 +67,11 @@ module.exports = {
                 });
         })
     },
-    unsplash: ({search}) => {
+    unsplash: ({search, license}) => {
         search = search ? search : "";
         search = encodeURI(search);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/unsplash?text=${search}`)
+            axios.get(`${config.apiV3}/majid/tools/unsplash?text=${search}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -80,10 +80,10 @@ module.exports = {
                 });
         })
     },
-    photoToAnime: ({url}) => {
+    photoToAnime: ({url, license}) => {
         url = url ? url : "";
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/ai/photo2anime?image=${url}`)
+            axios.get(`${config.apiV3}/majid/ai/photo2anime?image=${url}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -92,11 +92,11 @@ module.exports = {
                 });
         })
     },
-    pinterest: ({search}) => {
+    pinterest: ({search, license}) => {
         search = search ? search : "";
         search = encodeURI(search);
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/social/pinterest/search?s=${search}`)
+            axios.get(`${config.apiV3}/majid/social/pinterest/search?s=${search}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -105,13 +105,13 @@ module.exports = {
                 });
         })
     },
-    cropImage: ({imageUrl, width, height}) => {
+    cropImage: ({imageUrl, width, height, license}) => {
         width = width ? width.toString().trim() : "";
         height = height ? height.toString().trim() : "";
         imageUrl = imageUrl ? imageUrl : "";
 
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/image/crop?url=${imageUrl}&width=${width}&height=${height}`)
+            axios.get(`${config.apiV3}/majid/tools/image/crop?url=${imageUrl}&width=${width}&height=${height}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result);
                 })
@@ -120,11 +120,11 @@ module.exports = {
                 });
         })
     },
-    ocr: ({imageUrl}) => {
+    ocr: ({imageUrl, license}) => {
         imageUrl = imageUrl ? imageUrl : "";
         return new Promise(resolve => {
             if (imageUrl !== "") {
-                axios.get(`${config.apiV4}/api/tools/ocr/?url=${imageUrl}`)
+                axios.get(`${config.apiV4}/api/tools/ocr/?url=${imageUrl}&license=${license}`)
                     .then(r => {
                         let text = r.data ? r.data.result ? r.data.result.text ? r.data.result.text.toString().trim() : "" : "" : "";
                         resolve(text);

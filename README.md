@@ -238,6 +238,8 @@ license.instagramDownload({
 
 ## لیست سرویس های در دسترس
 
+### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
+
 - **[اوقات شرعی](#اوقات-شرعی)**
 - **[OCR](#OCR)**
 - **[آب و هوا](#آب-و-هوا)**
@@ -331,24 +333,28 @@ const {religiousTimes} = require("haji-api/modules/tools");
 
 // لیست استان ها
 religiousTimes({
-    method: "provinces"
+    method: "provinces",
+    license: "your_license"
 }).then(console.log);
 
 // لیست شهر ها
 religiousTimes({
-    method: "cities"
+    method: "cities",
+    license: "your_license"
 }).then(console.log);
 
 // اوقات شرعی بر اساس شناسه شهر
 religiousTimes({
     method: "cityID",
-    cityID: "20_131" // از متد لیست شهر ها
+    cityID: "20_131", // از متد لیست شهر ها
+    license: "your_license"
 }).then(console.log);
 
 // اوقات شرعی بر اساس اسم شهر
 religiousTimes({
     method: "search",
-    search: "تبریز"
+    search: "تبریز",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -359,7 +365,8 @@ const {ocr} = require("haji-api/modules/image");
 
 // استخراج متن فارسی از عکس
 ocr({
-    imageUrl: "https://i.pinimg.com/736x/fb/24/2e/fb242e91771b3e392f12174ef7cfaf77.jpg"
+    imageUrl: "https://i.pinimg.com/736x/fb/24/2e/fb242e91771b3e392f12174ef7cfaf77.jpg",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -369,7 +376,8 @@ ocr({
 const {weather} = require("haji-api/modules/tools");
 
 weather({
-    city: "تهران"
+    city: "تهران",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -381,12 +389,14 @@ const {cooking} = require("haji-api/modules/fun");
 // جستجوی غذا از سایت rezim.ir
 cooking({
     method: "search",
-    search: "سوخاری"
+    search: "سوخاری",
+    license: "your_license"
 }).then(console.log);
 
 // دریافت دستور پخت و طرز تهیه غذا
 cooking({
     method: "info",
+    license: "your_license",
     url: "https://rezim.ir/..."// لینک (url) غذا از متد search
 }).then(console.log);
 ```
@@ -397,7 +407,8 @@ cooking({
 const {html2json} = require("haji-api/modules/tools");
 
 html2json({
-    html: "<p>کد HTML شما</p>"
+    html: "<p>کد HTML شما</p>",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -408,12 +419,14 @@ const {webScraper, webScraperPro} = require("haji-api/modules/tools");
 
 // ساده
 webScraper({
-    url: "لینک موردنظر برای اسکرپ"
+    url: "لینک موردنظر برای اسکرپ",
+    license: "your_license"
 }).then(console.log);
 
 // پرو (روی کروم اجرا می شود)
 webScraperPro({
-    url: "لینک موردنظر برای اسکرپ"
+    url: "لینک موردنظر برای اسکرپ",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -422,7 +435,7 @@ webScraperPro({
 ```javascript
 const {joke} = require("haji-api/modules/fun");
 
-joke().then(console.log);
+joke("your_license").then(console.log);
 ```
 
 ## دانلود ویدیو پینترست
@@ -431,7 +444,8 @@ joke().then(console.log);
 const {pinterestDownloadVideo} = require("haji-api/modules/pinterest");
 
 pinterestDownloadVideo({
-    url: "https://pin.it/XmathTqdC"
+    url: "https://pin.it/XmathTqdC",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -440,7 +454,7 @@ pinterestDownloadVideo({
 ```javascript
 const {falPhoto} = require("haji-api/modules/fun");
 
-falPhoto()
+falPhoto("your_license")
     .then(console.log);
 ```
 
@@ -452,13 +466,15 @@ const {spotify} = require("haji-api/modules/music");
 // جستجو
 spotify({
     method: "search",
-    search: "نام خواننده یا موزیک"
+    search: "نام خواننده یا موزیک",
+    license: "your_license"
 }).then(console.log);
 
 // دانلود
 spotify({
     method: "download",
-    url: "لینک اسپاتیفای از متد قبلی"
+    url: "لینک اسپاتیفای از متد قبلی",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -468,7 +484,8 @@ spotify({
 const {musicVIP} = require("haji-api/modules/music");
 
 musicVIP({
-    search: "نام خواننده یا موزیک"
+    search: "نام خواننده یا موزیک",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -479,7 +496,8 @@ const {photoToAnimeAI} = require("haji-api/modules/ai");
 
 photoToAnimeAI({
     imageUrl: "لینک عکس",
-    prompt: "a boy"
+    prompt: "a boy",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -489,7 +507,8 @@ photoToAnimeAI({
 const {llama2} = require("haji-api/modules/ai");
 
 llama2({
-    question: "Whats your name?"
+    question: "Whats your name?",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -500,12 +519,14 @@ const {v2ray} = require("haji-api/modules/telegram");
 
 // لیست کانفیگ ها (پیشفرض)
 v2ray({
+    license: "your_license",
     configName: "https://t.me/HajiApi" // اسم کانفیگ ها (تبلیغ خودتون)
 }).then(console.log);
 
 // لیست کانفیگ ها (سفارشی)
 v2ray({
-    configName: "https://t.me/HajiApi", // اسم کانفیگ ها (تبلیغ خودتون)
+    configName: "https://t.me/HajiApi",
+    license: "your_license", // اسم کانفیگ ها (تبلیغ خودتون)
     username: "napsternetv"// آدرس چنل مورد نظر برای استخراج کانفیگ ها را وارد کنید.
 }).then(console.log);
 ```
@@ -516,10 +537,11 @@ v2ray({
 const {proxies} = require("haji-api/modules/telegram");
 
 // لیست پراکسی ها (پیشفرض)
-proxies().then(console.log);
+proxies("your_license").then(console.log);
 
 // لیست پراکسی ها (سفارشی)
 proxies({
+    license: "your_license",
     username: "proxycityiran"// آدرس چنل مورد نظر برای استخراج پراکسی ها را وارد کنید.
 }).then(console.log);
 ```
@@ -531,12 +553,14 @@ const {user, channel} = require("haji-api/modules/telegram");
 
 // اطلاعات کاربر تلگرام
 user({
+    license: "your_license",
     username: "MajidRajabiVardanjani",
 }).then(console.log);
 
 // اطلاعات کانال تلگرام
 channel({
     username: "HajiApi",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -547,6 +571,7 @@ const {cropImage} = require("haji-api/modules/image");
 
 cropImage({
     imageUrl: "لینک عکس",
+    license: "your_license",
     width: "512", // عرض
     height: "512" // ارتفاع
 }).then(console.log);
@@ -558,7 +583,8 @@ cropImage({
 const {pinterest} = require("haji-api/modules/image");
 
 pinterest({
-    search: "Boy"
+    search: "Boy",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -568,7 +594,8 @@ pinterest({
 const {linkPreview} = require("haji-api/modules/tools");
 
 linkPreview({
-    link: "https://t.me/HajiApi/11261"
+    link: "https://t.me/HajiApi/11261",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -578,7 +605,8 @@ linkPreview({
 const {removeBackground2} = require("haji-api/modules/ai");
 
 removeBackground2({
-    imageUrl: "لینک عکس"
+    imageUrl: "لینک عکس",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -588,7 +616,8 @@ removeBackground2({
 const {imageUpscale} = require("haji-api/modules/ai");
 
 imageUpscale({
-    imageUrl: "لینک عکس"
+    imageUrl: "لینک عکس",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -598,7 +627,8 @@ imageUpscale({
 const {wikipedia} = require("haji-api/modules/tools");
 
 wikipedia({
-    search: "آموزش"
+    search: "آموزش",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -608,7 +638,8 @@ wikipedia({
 const {imageMetadata} = require("haji-api/modules/tools");
 
 imageMetadata({
-    imageUrl: "لینک عکس"
+    imageUrl: "لینک عکس",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -617,7 +648,7 @@ imageMetadata({
 ```javascript
 const {nobitex} = require("haji-api/modules/rate");
 
-nobitex().then(console.log);
+nobitex("your_license").then(console.log);
 ```
 
 ## قیمت خودرو
@@ -626,6 +657,7 @@ nobitex().then(console.log);
 const {khodro} = require("haji-api/modules/rate");
 
 khodro({
+    license: "your_license",
     search: "207" // اسم خودرو
 }).then(console.log);
 ```
@@ -635,7 +667,7 @@ khodro({
 ```javascript
 const {danestani} = require("haji-api/modules/fun");
 
-danestani().then(console.log);
+danestani("your_license").then(console.log);
 ```
 
 ## انیمه کردن عکس
@@ -644,7 +676,8 @@ danestani().then(console.log);
 const {photoToAnime} = require("haji-api/modules/image");
 
 photoToAnime({
-    url: "لینک عکس مورد نظر"
+    url: "لینک عکس مورد نظر",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -654,7 +687,8 @@ photoToAnime({
 const {nameDictionary} = require("haji-api/modules/fun");
 
 nameDictionary({
-    name: "مجید"
+    name: "مجید",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -664,7 +698,8 @@ nameDictionary({
 const {torob} = require("haji-api/modules/shop");
 
 torob({
-    search: "iPhone"
+    search: "iPhone",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -674,7 +709,8 @@ torob({
 const {farsroid} = require("haji-api/modules/tools");
 
 farsroid({
-    appName: "اینشات"
+    appName: "اینشات",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -684,7 +720,8 @@ farsroid({
 const {shazam} = require("haji-api/modules/music");
 
 shazam({
-    url: "mp3 لینک فایل صوتی با فرمت"
+    url: "mp3 لینک فایل صوتی با فرمت",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -694,7 +731,8 @@ shazam({
 const {stt} = require("haji-api/modules/ai");
 
 stt({
-    url: "mp3 ogg oga لینک فایل صوتی با فرمت"
+    url: "mp3 ogg oga لینک فایل صوتی با فرمت",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -703,7 +741,7 @@ stt({
 ```javascript
 const {fal} = require("haji-api/modules/fun");
 
-fal().then(console.log);
+fal("your_license").then(console.log);
 ```
 
 ## جستجوی عکس Unsplash
@@ -712,7 +750,8 @@ fal().then(console.log);
 const {unsplash} = require("haji-api/modules/image");
 
 unsplash({
-    search: "گوشی"
+    search: "گوشی",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -722,7 +761,8 @@ unsplash({
 const {photoToCartoon} = require("haji-api/modules/image");
 
 photoToCartoon({
-    url: "لینک عکس"
+    url: "لینک عکس",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -732,7 +772,8 @@ photoToCartoon({
 const {searchImage} = require("haji-api/modules/image");
 
 searchImage({
-    search: "عکس نوشته"
+    search: "عکس نوشته",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -742,7 +783,8 @@ searchImage({
 const {dallE} = require("haji-api/modules/ai");
 
 dallE({
-    prompt: "یک گربه که خوابیده است"
+    prompt: "یک گربه که خوابیده است",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -752,7 +794,8 @@ dallE({
 const {drawImage} = require("haji-api/modules/ai");
 
 drawImage({
-    prompt: "یک سگ در حال پرواز"
+    prompt: "یک سگ در حال پرواز",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -764,21 +807,23 @@ const {ephoto360} = require("haji-api/modules/ai");
 // ساخت لوگو با استایل تصادفی
 ephoto360({
     method: "random",
-    text: "Haji API"
+    text: "Haji API",
+    license: "your_license"
 }).then(console.log);
 
 // لیست استایل ها
 ephoto360({
-    method: "styles"
+    method: "styles",
+    license: "your_license"
 }).then(console.log);
 
 // ساخت لوگو
 ephoto360({
     method: "custom",
     text: "Haji API",
-    url: "لینک استایل از متد لیست استایل ها"
+    url: "لینک استایل از متد لیست استایل ها",
+    license: "your_license"
 }).then(console.log);
-
 ```
 
 ## اطلاعات تولد
@@ -787,6 +832,7 @@ ephoto360({
 const {birthdate} = require("haji-api/modules/fun");
 
 birthdate({
+    license: "your_license",
     d: "2", // روز
     m: "10", // ماه
     y: "1379" // سال
@@ -800,7 +846,8 @@ const {googleTranslate2} = require("haji-api/modules/tools");
 
 googleTranslate2({
     to: "en",
-    text: "سلام دنیا!"
+    text: "سلام دنیا!",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -810,7 +857,8 @@ googleTranslate2({
 const {imageSearch} = require("haji-api/modules/ai");
 
 imageSearch({
-    prompt: "a beautiful flower"
+    prompt: "a beautiful flower",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -820,6 +868,7 @@ imageSearch({
 const {tts} = require("haji-api/modules/ai");
 
 tts({
+    license: "your_license",
     text: "سلام عزیزم خوبی؟",
     character: "DilaraNeural" // DilaraNeural - FaridNeural
 }).then(console.log);
@@ -832,14 +881,16 @@ const {eghtesadNews} = require("haji-api/modules/news");
 
 // لیست اخبار و اطلاعات صفحه اصلی
 eghtesadNews({
-    method: "main"
+    method: "main",
+    license: "your_license"
 }).then(console.log);
 
 
 // دریافت اطلاعات خبر
 eghtesadNews({
     method: "details",
-    url: "لینک خبر متد قبلی"
+    url: "لینک خبر متد قبلی",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -850,12 +901,14 @@ const {digikalaSearch, digikalaInfo} = require("haji-api/modules/shop");
 
 // جستجوی محصول
 digikalaSearch({
-    search: "گوشی"
+    search: "گوشی",
+    license: "your_license"
 }).then(console.log);
 
 // اطلاعات محصول
 digikalaInfo({
-    productId: "شناسه محصول از متد قبلی"
+    productId: "شناسه محصول از متد قبلی",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -866,19 +919,22 @@ const {varzesh3Video} = require("haji-api/modules/news");
 
 // اطلاعات صفحه اصلی (دسته بندی ها، اخبار و ...)
 varzesh3Video({
-    method: "main"
+    method: "main",
+    license: "your_license"
 }).then(console.log);
 
 // دریافت اخبار بر اساس دسته بندی
 varzesh3Video({
     method: "category",
-    url: "لینک دسته بندی از متد اطلاعات صفحه اصلی"
+    url: "لینک دسته بندی از متد اطلاعات صفحه اصلی",
+    license: "your_license"
 }).then(console.log);
 
 // دریافت اطلاعات خبر و دانلود ویدیو ها
 varzesh3Video({
     method: "details",
-    url: "لینک خبر از دو متد قبلی"
+    url: "لینک خبر از دو متد قبلی",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -889,11 +945,13 @@ const {moboMoviesSearch, moboMoviesDownload} = require("haji-api/modules/movie")
 
 // جستجوی فیلم یا سریال
 moboMoviesSearch({
-    search: "مردگان متحرک"
+    search: "مردگان متحرک",
+    license: "your_license"
 }).then(console.log);
 
 // اطلاعات و دانلود فیلم یا سریال
 moboMoviesDownload({
+    license: "your_license",
     moboUrl: "https://mobomovies.online/post/the-walking-dead" // لینک فیلم یا سریال از متد قبلی
 }).then(console.log);
 ```
@@ -905,7 +963,8 @@ const {googleSpellCorrection} = require("haji-api/modules/tools");
 
 // احتمال خطا در این وب سرویس زیاد است
 googleSpellCorrection({
-    text: "صلام خوبی؟"
+    text: "صلام خوبی؟",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -916,7 +975,8 @@ const {gpt} = require("haji-api/modules/ai");
 
 gpt({
     model: "GPT-3.5", // GPT-3 - GPT-3.5 - GPT-4
-    question: "سلام ربات خوبی؟"
+    question: "سلام ربات خوبی؟",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -926,11 +986,17 @@ gpt({
 const {darooyab} = require("haji-api/modules/tools");
 
 // جستجوی دارو
-darooyab({search: "ملاتونین"})
+darooyab({
+    search: "ملاتونین",
+    license: "your_license"
+})
     .then(console.log);
 
 // اطلاعات دارو
-darooyab({url: "لینک دارویاب از متد قبلی (جستجو)"})
+darooyab({
+    url: "لینک دارویاب از متد قبلی (جستجو)",
+    license: "your_license"
+})
     .then(console.log);
 ```
 
@@ -940,11 +1006,12 @@ darooyab({url: "لینک دارویاب از متد قبلی (جستجو)"})
 const {carbonOptions, carbon} = require("haji-api/modules/carbon");
 
 // دریافت گزینه ها
-carbonOptions()
+carbonOptions("your_license")
     .then(console.log);
 
 carbon({
-    code: "Your_Code ..."
+    code: "Your_Code ...",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -965,7 +1032,8 @@ carbon({
 const {nationalCode} = require("haji-api/modules/tools");
 
 nationalCode({
-    text: "کد ملی مورد نظر"
+    text: "کد ملی مورد نظر",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -975,6 +1043,7 @@ nationalCode({
 const {bmi} = require("haji-api/modules/fun");
 
 bmi({
+    license: "your_license",
     weight: 75, // وزن
     height: 180 // قد
 }).then(console.log);
@@ -985,7 +1054,10 @@ bmi({
 ```javascript
 const {football} = require("haji-api/modules/news");
 
-football({method: "news"}) // method => "news" or "live"
+football({
+    method: "news",
+    license: "your_license"
+}) // method => "news" or "live"
     .then(console.log);
 ```
 
@@ -994,7 +1066,7 @@ football({method: "news"}) // method => "news" or "live"
 ```javascript
 const {exchangeRate} = require("haji-api/modules/rate");
 
-exchangeRate()
+exchangeRate("your_license")
     .then(console.log);
 ```
 
@@ -1004,12 +1076,16 @@ exchangeRate()
 const {shorLink, shorLink2} = require("haji-api/modules/tools");
 
 // وب سرویس 1
-shorLink({url: "https://google.com"})
-    .then(console.log);
+shorLink({
+    url: "https://google.com",
+    license: "your_license"
+}).then(console.log);
 
 // وب سرویس 2
-shorLink2({url: "https://google.com"})
-    .then(console.log);
+shorLink2({
+    url: "https://google.com",
+    license: "your_license"
+}).then(console.log);
 ```
 
 ## GooglePlay دانلودر
@@ -1017,8 +1093,10 @@ shorLink2({url: "https://google.com"})
 ```javascript
 const {googlePlayDownload} = require("haji-api/modules/googleplay");
 
-googlePlayDownload({url: "https://play.google.com/store/apps/details?id=org.telegram.messenger"})
-    .then(console.log);
+googlePlayDownload({
+    url: "https://play.google.com/store/apps/details?id=org.telegram.messenger",
+    license: "your_license"
+}).then(console.log);
 ```
 
 ## SoundCloud دانلودر
@@ -1026,8 +1104,10 @@ googlePlayDownload({url: "https://play.google.com/store/apps/details?id=org.tele
 ```javascript
 const {soundCloudDownload} = require("haji-api/modules/music");
 
-soundCloudDownload({url: "https://soundcloud.com/..."})
-    .then(console.log);
+soundCloudDownload({
+    url: "https://soundcloud.com/...",
+    license: "your_license"
+}).then(console.log);
 ```
 
 ## حذف پس زمینه عکس با هوش مصنوعی 1
@@ -1035,8 +1115,10 @@ soundCloudDownload({url: "https://soundcloud.com/..."})
 ```javascript
 const {removeBackground1} = require("haji-api/modules/ai");
 
-removeBackground1({imageUrl: "لینک عکس"})
-    .then(console.log);
+removeBackground1({
+    imageUrl: "لینک عکس",
+    license: "your_license"
+}).then(console.log);
 ```
 
 ## هاست پایتون رایگان
@@ -1044,7 +1126,7 @@ removeBackground1({imageUrl: "لینک عکس"})
 ```javascript
 const {pythonHost} = require("haji-api/modules/tools");
 
-pythonHost()
+pythonHost("your_license")
     .then(console.log);
 ```
 
@@ -1053,7 +1135,10 @@ pythonHost()
 ```javascript
 const {lexicaSearch} = require("haji-api/modules/ai");
 
-lexicaSearch({prompt: "a beautiful flower"})
+lexicaSearch({
+    prompt: "a beautiful flower",
+    license: "your_license"
+})
     .then(console.log);
 ```
 
@@ -1079,6 +1164,7 @@ console.log(str);
 const {QRCode} = require("haji-api/modules/tools");
 
 QRCode({
+    license: "your_license",
     text: "English Text", // متن یا لینک (انگلیسی)
     size: 12 // اندازه (از 1 تا 12 پیشفرض 12)
 }).then(console.log);
@@ -1089,7 +1175,7 @@ QRCode({
 ```javascript
 const {irna} = require("haji-api/modules/news");
 
-irna()
+irna("your_license")
     .then(console.log);
 ```
 
@@ -1101,7 +1187,8 @@ const {googleTranslate1} = require("haji-api/modules/tools");
 googleTranslate1({
     from: "fa",
     to: "en",
-    text: "سلام دنیا!"
+    text: "سلام دنیا!",
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -1110,7 +1197,7 @@ googleTranslate1({
 ```javascript
 const {motivationalPhoto} = require("haji-api/modules/image");
 
-motivationalPhoto()
+motivationalPhoto("your_license")
     .then(console.log); // Base64 Image ...
 ```
 
@@ -1119,22 +1206,42 @@ motivationalPhoto()
 ```javascript
 const {melobit} = require("haji-api/modules/music");
 
-melobit({method: "new"}) // موزیک های جدید
+melobit({
+    method: "new",
+    license: "your_license"
+}) // موزیک های جدید
     .then(console.log);
 
-melobit({method: "day"}) // موزیک های برتر روز
+melobit({
+    method: "day",
+    license: "your_license"
+}) // موزیک های برتر روز
     .then(console.log);
 
-melobit({method: "week"}) // موزیک های برتر هفته
+melobit({
+    method: "week",
+    license: "your_license"
+}) // موزیک های برتر هفته
     .then(console.log);
 
-melobit({method: "trend"}) // موزیک های ترند
+melobit({
+    method: "trend",
+    license: "your_license"
+}) // موزیک های ترند
     .then(console.log);
 
-melobit({method: "search", search: "آهنگ"}) // جستجوی موزیک
+melobit({
+    method: "search",
+    search: "آهنگ",
+    license: "your_license"
+}) // جستجوی موزیک
     .then(console.log);
 
-melobit({method: "info", id: "شناسه موزیک از متد های قبلی"}) // اطلاعات و دانلود موزیک
+melobit({
+    method: "info",
+    id: "شناسه موزیک از متد های قبلی",
+    license: "your_license"
+}) // اطلاعات و دانلود موزیک
     .then(console.log);
 ```
 
@@ -1143,8 +1250,11 @@ melobit({method: "info", id: "شناسه موزیک از متد های قبلی"
 ```javascript
 const {wallpaper} = require("haji-api/modules/image");
 
-wallpaper({search: "آیفون", page: 1})
-    .then(console.log);
+wallpaper({
+    search: "آیفون",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
 ```
 
 ## سخنگو
@@ -1152,7 +1262,7 @@ wallpaper({search: "آیفون", page: 1})
 ```javascript
 const {sokhangoo} = require("haji-api/modules/fun");
 
-sokhangoo("سلام")
+sokhangoo("سلام", "your_license")
     .then(console.log);
 ```
 
@@ -1163,7 +1273,8 @@ const {ping} = require("haji-api/modules/tools");
 
 ping({
     domainOrIP: "google.com",
-    port: 443
+    port: 443,
+    license: "your_license"
 }).then(console.log);
 ```
 
@@ -1173,6 +1284,7 @@ ping({
 const {creditCard} = require("haji-api/modules/tools");
 
 creditCard({
+    license: "your_license",
     bin: "435412",
     year: "2025",
     month: "01",
@@ -1185,7 +1297,7 @@ creditCard({
 ```javascript
 const {cryptoCurrency} = require("haji-api/modules/rate");
 
-cryptoCurrency()
+cryptoCurrency("your_license")
     .then(console.log);
 ```
 
@@ -1194,7 +1306,7 @@ cryptoCurrency()
 ```javascript
 const {zekr} = require("haji-api/modules/tools");
 
-zekr()
+zekr("your_license")
     .then(console.log);
 ```
 
@@ -1203,7 +1315,7 @@ zekr()
 ```javascript
 const {font} = require("haji-api/modules/fun");
 
-font("HajiAPI", false) // Design true or false
+font("HajiAPI", false, "your_license") // Design true or false
     .then(console.log);
 ```
 
@@ -1212,7 +1324,7 @@ font("HajiAPI", false) // Design true or false
 ```javascript
 const {logo2} = require("haji-api/modules/image");
 
-logo2("HA")
+logo2("HA", "your_license")
     .then(console.log);
 ```
 
@@ -1221,13 +1333,13 @@ logo2("HA")
 ```javascript
 const {searchCafeBazar, infoCafeBazar, downloadCafeBazar} = require("haji-api/modules/cafebazar");
 
-searchCafeBazar("اینشات") // جستجو در کافه بازار.
+searchCafeBazar("اینشات", "your_license") // جستجو در کافه بازار.
     .then(console.log);
 
-infoCafeBazar("PACKAGE-NAME") // دریافت اطلاعات برنامه یا بازی (پکیج نیم را از متد قبلی دریافت کنید)
+infoCafeBazar("PACKAGE-NAME", "your_license") // دریافت اطلاعات برنامه یا بازی (پکیج نیم را از متد قبلی دریافت کنید)
     .then(console.log);
 
-downloadCafeBazar("PACKAGE-NAME") // دانلود برنامه یا بازی (پکیج نیم را از متد اول دریافت کنید)
+downloadCafeBazar("PACKAGE-NAME", "your_license") // دانلود برنامه یا بازی (پکیج نیم را از متد اول دریافت کنید)
     .then(console.log);
 ```
 
@@ -1235,7 +1347,7 @@ downloadCafeBazar("PACKAGE-NAME") // دانلود برنامه یا بازی (پ
 
 ```javascript
 const {telegramProxies1} = require("haji-api/modules/tools");
-telegramProxies1("ProxyMTProto") // آدرس چنل مورد نظر برای استخراج پراکسی ها را وارد کنید.
+telegramProxies1("ProxyMTProto", "your_license") // آدرس چنل مورد نظر برای استخراج پراکسی ها را وارد کنید.
     .then(console.log);
 ```
 
@@ -1243,7 +1355,7 @@ telegramProxies1("ProxyMTProto") // آدرس چنل مورد نظر برای ا�
 
 ```javascript
 const {deghat} = require("haji-api/modules/fun");
-deghat()
+deghat("your_license")
     .then(console.log);
 ```
 
@@ -1253,11 +1365,11 @@ deghat()
 const {fakeMail} = require("haji-api/modules/tools");
 
 // دریافت آدرس ایمیل فیک
-fakeMail()
+fakeMail("your_license")
     .then(console.log);
 
 // دریافت لیست ایمیل ها
-fakeMail("getMessages", "آدرس ایمیل دریافتی")
+fakeMail("getMessages", "آدرس ایمیل دریافتی", "your_license")
     .then(console.log);
 ```
 
@@ -1265,7 +1377,7 @@ fakeMail("getMessages", "آدرس ایمیل دریافتی")
 
 ```javascript
 const {heavy} = require("haji-api/modules/fun");
-heavy()
+heavy("your_license")
     .then(console.log);
 ```
 
@@ -1273,7 +1385,7 @@ heavy()
 
 ```javascript
 const {photography} = require("haji-api/modules/fun");
-photography()
+photography("your_license")
     .then(console.log);
 ```
 
@@ -1281,7 +1393,7 @@ photography()
 
 ```javascript
 const {dateTime} = require("haji-api/modules/tools");
-dateTime()
+dateTime("your_license")
     .then(console.log);
 ```
 
@@ -1289,7 +1401,7 @@ dateTime()
 
 ```javascript
 const {famousBook} = require("haji-api/modules/fun");
-famousBook()
+famousBook("your_license")
     .then(console.log);
 ```
 
@@ -1297,6 +1409,6 @@ famousBook()
 
 ```javascript
 const {motivational} = require("haji-api/modules/fun");
-motivational()
+motivational("your_license")
     .then(console.log);
 ```

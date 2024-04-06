@@ -64,7 +64,7 @@ module.exports = class License {
                 furl = `${furl}/3`;
                 break;
         }
-        furl = `${furl}?question=${encodeURI(question)}${this.lq}`;
+        furl = `${furl}?q=${encodeURI(question)}${this.lq}`;
 
         return new Promise(resolve => {
             axios.get(furl)

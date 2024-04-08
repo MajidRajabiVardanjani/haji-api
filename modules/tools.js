@@ -378,5 +378,36 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         });
+    },
+    network: ({action, host, port, ip, queryType, license = ""}) => {
+        action = action ? action : "ping";
+        queryType = queryType ? queryType.toUpperCase() : "A";
+
+        let furl = `${config.apiV3}/majid/tools/network?action=${action}`;
+        switch (action) {
+            case "dns":
+                furl = `${furl}&host=${host}&queryType=${queryType}`;
+                break;
+            case "reverse":
+                furl = `${furl}&ip=${ip}`;
+                break;
+            case "port":
+                furl = `${furl}&host=${host}&port=${port}`;
+                break;
+            default:
+                furl = `${furl}&host=${host}`;
+                break;
+        }
+        furl = `${furl}&license=${license}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

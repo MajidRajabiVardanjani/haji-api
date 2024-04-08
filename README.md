@@ -240,6 +240,7 @@ license.instagramDownload({
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[شبکه](#شبکه)**
 - **[اوقات شرعی](#اوقات-شرعی)**
 - **[OCR](#OCR)**
 - **[آب و هوا](#آب-و-هوا)**
@@ -325,6 +326,42 @@ license.instagramDownload({
 - **[تاریخ و ساعت](#تاریخ-و-ساعت)**
 - **[متن کتب معروف رندوم](#متن-کتب-معروف-رندوم)**
 - **[جمله انگیزشی رندوم](#جمله-انگیزشی-رندوم)**
+
+## شبکه
+
+```javascript
+const {network} = require("haji-api/modules/tools");
+
+// پینگ
+network({
+    action: "ping",
+    host: "google.com",
+    license: "your_license"
+}).then(console.log);
+
+// بررسی باز بودن پورت
+network({
+    action: "port",
+    host: "google.com",
+    port: "443",
+    license: "your_license"
+}).then(console.log);
+
+// DNS Reverse Lookup
+network({
+    action: "reverse",
+    ip: "8.8.8.8",
+    license: "your_license"
+}).then(console.log);
+
+// DNS
+network({
+    action: "dns",
+    host: "google.com",
+    queryType: "A", // A - AAAA - NS - CNAME - SOA - MX - TXT
+    license: "your_license"
+}).then(console.log);
+```
 
 ## اوقات شرعی
 

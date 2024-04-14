@@ -409,5 +409,21 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    dehkhoda: ({text = "", license = ""}) => {
+        text = text ? text.toString().trim() : "";
+        return new Promise(resolve => {
+            if (text !== "") {
+                axios.get(`${config.apiV3}/majid/tools/dictionary/dehkhoda?q=${encodeURI(text)}&license=${license}`)
+                    .then(r => {
+                        resolve(r.data.result);
+                    })
+                    .catch(err => {
+                        config.resolveError(resolve, err);
+                    });
+            } else {
+                resolve({error: "'text' parameter is empty!"})
+            }
+        })
     }
 }

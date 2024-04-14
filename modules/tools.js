@@ -425,5 +425,16 @@ module.exports = {
                 resolve({error: "'text' parameter is empty!"})
             }
         })
+    },
+    date: ({license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/date?license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -115,9 +115,17 @@ module.exports = {
                 });
         })
     },
-    soundCloudDownload2({url = "", license = ""}) {
+    soundcloud({method = "search", search = "", url = "", license = ""}) {
+        let furl = `${config.apiV3}/majid/soundcloud`;
+        if (method === "search") {
+            furl = `${furl}/search?s=${search}`;
+        } else {
+            furl = `${furl}/download?url=${url}`;
+        }
+        furl = `${furl}&license=${license}`;
+
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/soundcloud/download?url=${url}&license=${license}`)
+            axios.get(furl)
                 .then(r => {
                     resolve(r.data.result);
                 })

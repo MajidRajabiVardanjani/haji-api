@@ -436,5 +436,17 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+
+    webShot: ({license = "", url = "", fullSize = false, width = "512", height = "512"}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.api}/webshot/?url=${url}&fullSize=${fullSize.toString()}&height=${height}&width=${width}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.link);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err)
+                });
+        })
     }
 }

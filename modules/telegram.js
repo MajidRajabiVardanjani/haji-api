@@ -63,5 +63,18 @@ module.exports = {
                     resolveError(resolve, err);
                 });
         });
+    },
+    channelPosts: ({id, license}) => {
+        id = id ? id.toString().trim() : "";
+
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/telegram/channel/posts?id=${id}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    resolveError(resolve, err);
+                });
+        });
     }
 }

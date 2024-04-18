@@ -25,6 +25,7 @@ npm i haji-api --save
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
 - **[ساندکلود](#ساندکلود)**
+- **[آخرین پست های کانال تلگرام](#آخرین-پست-های-کانال-تلگرام)**
 - **[تاریخ](#تاریخ)**
 - **[لغت نامه دهخدا](#لغت-نامه-دهخدا)**
 - **[شبکه](#شبکه)**
@@ -128,6 +129,31 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## وب شات
+
+```javascript
+const {webShot} = require("haji-api/modules/tools");
+
+webShot({
+    license: "your_license",
+    url: "https://hajiapi.ir",
+    fullSize: false,
+    width: "512",
+    height: "512"
+}).then(console.log);
+```
+
+## آخرین پست های کانال تلگرام
+
+```javascript
+const {channelPosts} = require("haji-api/modules/telegram");
+
+channelPosts({
+    license: "your_license",
+    id: "HajiApi"
+}).then(console.log);
+```
 
 ## ساندکلود
 

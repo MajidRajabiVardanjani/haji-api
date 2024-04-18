@@ -24,6 +24,8 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[فیلم مشابه یاب](#فیلم-مشابه-یاب)**
+- **[IMDB](#IMDB)**
 - **[وب شات](#وب-شات)**
 - **[آخرین پست های کانال تلگرام](#آخرین-پست-های-کانال-تلگرام)**
 - **[ساندکلود](#ساندکلود)**
@@ -130,6 +132,37 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## فیلم مشابه یاب
+
+```javascript
+const {similarMovie} = require("haji-api/modules/movie");
+
+similarMovie({
+    license: "your_license",
+    movieName: "love" // اسم فیلم
+}).then(console.log);
+```
+
+## IMDB
+
+```javascript
+const {imdb} = require("haji-api/modules/movie");
+
+// جستجوی فیلم یا سریال
+imdb({
+    license: "your_license",
+    method: "search",
+    search: "War"
+}).then(console.log);
+
+//اطلاعات فیلم یا سریال
+imdb({
+    license: "your_license",
+    method: "info",
+    id: "ID" // آی دی از متد قبلی
+}).then(console.log);
+```
 
 ## وب شات
 

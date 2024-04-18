@@ -114,5 +114,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    soundCloudDownload2({url = "", license = ""}) {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/soundcloud/download?url=${url}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

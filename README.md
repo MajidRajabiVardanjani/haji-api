@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[دانلودر ساندکلود2](#دانلودر_ساندکلود2)**
 - **[تاریخ](#تاریخ)**
 - **[لغت نامه دهخدا](#لغت-نامه-دهخدا)**
 - **[شبکه](#شبکه)**
@@ -127,6 +128,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## دانلودر ساندکلود2
+
+```javascript
+const {soundCloudDownload2} = require("haji-api/modules/music");
+
+soundCloudDownload2({
+    license: "your_license",
+    url: "لینک موزیک"
+}).then(console.log);
+```
 
 ## تاریخ
 

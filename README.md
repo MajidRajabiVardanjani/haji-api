@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[دانلودر آپارات](#دانلودر-آپارات)**
 - **[فیلم مشابه یاب](#فیلم-مشابه-یاب)**
 - **[IMDB](#IMDB)**
 - **[وب شات](#وب-شات)**
@@ -132,6 +133,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## دانلودر آپارات
+
+```javascript
+const {aparatDownloader} = require("haji-api/modules/tools");
+
+aparatDownloader({
+    license: "your_license",
+    url: "link" // لینک ویدیو آپارات
+}).then(console.log);
+```
 
 ## فیلم مشابه یاب
 

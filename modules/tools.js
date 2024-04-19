@@ -448,5 +448,16 @@ module.exports = {
                     config.resolveError(resolve, err)
                 });
         })
+    },
+    aparatDownloader: ({url = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.api}/aparat/?link=${url}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

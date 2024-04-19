@@ -143,7 +143,7 @@ const {url2pdf} = require("haji-api/modules/tools");
 url2pdf({
     url: "https://google.com",
     license: "your_license"
-})
+}).then(console.log);
 ```
 
 ## GooglePlay دانلودر
@@ -155,7 +155,7 @@ const {googlePlaySearch, googlePlayDownload} = require("haji-api/modules/googlep
 googlePlaySearch({
     appName: "inshot",
     license: "your_license"
-})
+}).then(console.log);
 
 // دانلود برنامه
 googlePlayDownload({

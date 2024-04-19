@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[GooglePlay دانلودر](#GooglePlay-دانلودر)**
 - **[دانلودر آپارات](#دانلودر-آپارات)**
 - **[فیلم مشابه یاب](#فیلم-مشابه-یاب)**
 - **[IMDB](#IMDB)**
@@ -90,7 +91,6 @@ npm i haji-api --save
 - **[... قیمت ارز فیات، دلار و](#-قیمت-ارز-فیات-دلار-و)**
 - **[کوتاه کننده لینک](#کوتاه-کننده-لینک)**
 - **[کوتاه کننده لینک](#کوتاه-کننده-لینک)**
-- **[GooglePlay دانلودر](#googleplay-دانلودر)**
 - **[SoundCloud دانلودر](#soundcloud-دانلودر)**
 - **[حذف پس زمینه عکس با هوش مصنوعی 1](#حذف-پس-زمینه-عکس-با-هوش-مصنوعی-1)**
 - **[هاست پایتون رایگان](#هاست-پایتون-رایگان)**
@@ -133,6 +133,24 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## GooglePlay دانلودر
+
+```javascript
+const {googlePlaySearch, googlePlayDownload} = require("haji-api/modules/googleplay");
+
+// جستجوی برنامه
+googlePlaySearch({
+    appName: "inshot",
+    license: "your_license"
+})
+
+// دانلود برنامه
+googlePlayDownload({
+    url: "https://play.google.com/store/apps/details?id=org.telegram.messenger", // از متد جستجو
+    license: "your_license"
+}).then(console.log);
+```
 
 ## دانلودر آپارات
 
@@ -1238,17 +1256,6 @@ shorLink({
 // وب سرویس 2
 shorLink2({
     url: "https://google.com",
-    license: "your_license"
-}).then(console.log);
-```
-
-## GooglePlay دانلودر
-
-```javascript
-const {googlePlayDownload} = require("haji-api/modules/googleplay");
-
-googlePlayDownload({
-    url: "https://play.google.com/store/apps/details?id=org.telegram.messenger",
     license: "your_license"
 }).then(console.log);
 ```

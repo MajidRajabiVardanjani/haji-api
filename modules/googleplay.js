@@ -17,5 +17,16 @@ module.exports = {
                 resolve({error: "پارامتر url نامعتبر است!"});
             }
         });
+    },
+    googlePlaySearch: ({appName = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/googleplay/search?name=${appName}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

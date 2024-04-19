@@ -459,5 +459,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    url2pdf: ({url = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/url2pdf?url=${url}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[استخراج متن از پی دی اف](#استخراج-متن-از-پی-دی-اف)**
 - **[مزاحم یاب تلگرام](#مزاحم-یاب-تلگرام)**
 - **[پی دی اف ساز](#پی-دی-اف-ساز)**
 - **[GooglePlay دانلودر](#GooglePlay-دانلودر)**
@@ -135,6 +136,18 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## استخراج متن از پی دی اف
+
+```javascript
+const {extractPDFText} = require("haji-api/modules/tools");
+
+// نکته: فایل پی دی اف باید متنی باشد و عکس نباشد
+extractPDFText({
+    pdfUrl: "https://dl3.takbook.com/pdf3/ebook10731[www.takbook.com].pdf",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## مزاحم یاب تلگرام
 

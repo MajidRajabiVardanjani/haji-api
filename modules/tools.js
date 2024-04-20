@@ -470,5 +470,20 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    extractPDFText: ({pdfUrl = "", license = ""}) => {
+        return new Promise(resolve => {
+            if (pdfUrl.includes(".pdf")) {
+                axios.get(`${config.apiV3}/majid/tools/extract/pdf?url=${pdfUrl}&license=${license}`)
+                    .then(r => {
+                        resolve(r.data.result);
+                    })
+                    .catch(err => {
+                        config.resolveError(resolve, err);
+                    });
+            } else {
+                resolve({error: "pdfUrl is not valid!"});
+            }
+        })
     }
 }

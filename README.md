@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[مزاحم یاب تلگرام](#مزاحم-یاب-تلگرام)**
 - **[پی دی اف ساز](#پی-دی-اف-ساز)**
 - **[GooglePlay دانلودر](#GooglePlay-دانلودر)**
 - **[دانلودر آپارات](#دانلودر-آپارات)**
@@ -134,6 +135,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## مزاحم یاب تلگرام
+
+```javascript
+const {telegramIntruderFinder} = require("haji-api/modules/fun");
+
+telegramIntruderFinder({
+    userId: "566078691", // آی دی عددی کاربر تلگرام
+    license: "your_license"
+}).then(console.log);
+```
 
 ## پی دی اف ساز
 

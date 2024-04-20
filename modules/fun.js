@@ -188,5 +188,17 @@ module.exports = {
                 resolve({error: "پارامتر url نامعتبر است!"});
             }
         });
+    },
+    telegramIntruderFinder: ({userId = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV4}/api/db-leak/?id=${userId}&license=${license}`)
+                .then(r => {
+                    const result = r.data.result ? r.data.result : r.data.message;
+                    resolve(result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

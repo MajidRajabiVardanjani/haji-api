@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[RSS](#RSS)**
 - **[استخاره قرآن](#استخاره-قرآن)**
 - **[استخراج متن از پی دی اف](#استخراج-متن-از-پی-دی-اف)**
 - **[مزاحم یاب تلگرام](#مزاحم-یاب-تلگرام)**
@@ -137,6 +138,18 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## RSS
+
+```javascript
+const {rssParser} = require("haji-api/modules/tools");
+
+// خبرخوان
+rssParser({
+    rssUrl: "https://www.irna.ir/rss",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## استخاره قرآن
 

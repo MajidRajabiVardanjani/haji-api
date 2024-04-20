@@ -485,5 +485,17 @@ module.exports = {
                 resolve({error: "pdfUrl is not valid!"});
             }
         })
+    },
+    rssParser: ({rssUrl = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/rss/parse?url=${rssUrl}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+
+        })
     }
 }

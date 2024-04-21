@@ -497,5 +497,16 @@ module.exports = {
                 });
 
         })
+    },
+    qrCode: ({text = "", size = 512, license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/qrcode?text=${text}&size=${size}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -25,6 +25,7 @@ npm i haji-api --save
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
 - **[RSS](#RSS)**
+- **[QR Code](#QR-Code)**
 - **[استخاره قرآن](#استخاره-قرآن)**
 - **[استخراج متن از پی دی اف](#استخراج-متن-از-پی-دی-اف)**
 - **[مزاحم یاب تلگرام](#مزاحم-یاب-تلگرام)**
@@ -138,6 +139,18 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## QR Code
+
+```javascript
+const {qrCode} = require("haji-api/modules/tools");
+
+qrCode({
+    text: "https://hajiapi.ir",
+    size: 512,
+    license: "your_license"
+}).then(console.log);
+```
 
 ## RSS
 

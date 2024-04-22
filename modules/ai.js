@@ -228,5 +228,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    dallE3: ({prompt = "a cute cat", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/ai/image/dalle3?p=${prompt}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[DallE 3](#DallE-3)**
 - **[آخرین خبر](#آخرین-خبر)**
 - **[RSS](#RSS)**
 - **[QR Code](#QR-Code)**
@@ -140,6 +141,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## DallE 3
+
+```javascript
+const {dallE3} = require("haji-api/modules/ai");
+
+dallE3({
+    prompt: "a cute cat",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## آخرین خبر
 

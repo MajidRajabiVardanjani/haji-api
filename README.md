@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[آخرین خبر](#آخرین-خبر)**
 - **[RSS](#RSS)**
 - **[QR Code](#QR-Code)**
 - **[استخاره قرآن](#استخاره-قرآن)**
@@ -139,6 +140,32 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## آخرین خبر
+
+```javascript
+const {akharinKhabar} = require("haji-api/modules/news");
+
+// لیست دسته بندی ها
+akharinKhabar({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// آخرین اخبار
+akharinKhabar({
+    method: "news",
+    category: "https://akharinkhabar.ir/", // لینک دسته بندی از متد لیست دسته بندی ها 
+    license: "your_license"
+}).then(console.log);
+
+// دریافت خبر (اطلاعات خبر)
+akharinKhabar({
+    method: "info",
+    url: "لینک خبر از متد آخرین اخبار",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## QR Code
 

@@ -78,5 +78,27 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    akharinKhabar: ({method = "categories", category = "https://akharinkhabar.ir/", url = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/akharinkhabar?action=${method}`;
+        switch (method) {
+            case "news":
+                furl = `${furl}&category=${category}`
+                break
+            case "info":
+                furl = `${furl}&url=${url}`
+                break
+        }
+        furl = `${furl}&license=${license}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

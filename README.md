@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[کپچا ساز](#کپچا-ساز)**
 - **[گجت نیوز](#گجت-نیوز)**
 - **[DallE 3](#DallE-3)**
 - **[آخرین خبر](#آخرین-خبر)**
@@ -140,6 +141,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## کپچا ساز
+
+```javascript
+const {captcha} = require("haji-api/modules/tools");
+
+captcha({
+    length: 5, // از 1 تا 10
+    license: "your_license"
+}).then(console.log);
+```
 
 ## گجت نیوز
 

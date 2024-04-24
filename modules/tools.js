@@ -508,5 +508,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    captcha: ({length = 5, license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/captcha?length=${length}&license=${license}`)
+                .then(r => {
+                    resolve(r.data);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

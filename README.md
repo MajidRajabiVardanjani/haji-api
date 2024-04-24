@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[گجت نیوز](#گجت-نیوز)**
 - **[DallE 3](#DallE-3)**
 - **[آخرین خبر](#آخرین-خبر)**
 - **[RSS](#RSS)**
@@ -127,8 +128,6 @@ npm i haji-api --save
 - **[متن کتب معروف رندوم](#متن-کتب-معروف-رندوم)**
 - **[جمله انگیزشی رندوم](#جمله-انگیزشی-رندوم)**
 
-## لیست سرویس های اشتراکی
-
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
 - **[فرهنگ نام ها اشتراکی](#فرهنگ-نام-ها-اشتراکی)**
@@ -141,6 +140,38 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## گجت نیوز
+
+```javascript
+const {gadgetNews} = require("haji-api/modules/news");
+
+// صفحه اصلی
+gadgetNews({
+    method: "home",
+    license: "your_license"
+}).then(console.log);
+
+// آخرین اخبار
+gadgetNews({
+    method: "latest",
+    license: "your_license"
+}).then(console.log);
+
+// جستجو
+gadgetNews({
+    method: "search",
+    search: "گوشی",
+    license: "your_license"
+}).then(console.log);
+
+// اطلاعات (شرح خبر)
+gadgetNews({
+    method: "info",
+    url: "url از متد های قبلی",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## DallE 3
 

@@ -100,5 +100,31 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    gadgetNews: ({method = "home", url = "", search = "", license = ""}) => {
+        let furl = `${config.apiV3}/gadgetnews`;
+        switch (method) {
+            case "latest":
+                furl = `${furl}/posts/latest?license=${license}`
+                break;
+            case "search":
+                furl = `${furl}/search?s=${search}&license=${license}`;
+                break;
+            case "info":
+                furl = `${furl}/info?url=${url}&license=${license}`;
+                break;
+            default :
+                furl = `${furl}?license=${license}`;
+                break;
+        }
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

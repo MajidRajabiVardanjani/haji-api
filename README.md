@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[طب سنتی](#طب-سنتی)**
 - **[کپچا ساز](#کپچا-ساز)**
 - **[گجت نیوز](#گجت-نیوز)**
 - **[DallE 3](#DallE-3)**
@@ -141,6 +142,26 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## طب سنتی
+
+```javascript
+const {tebeSonati} = require("haji-api/modules/fun");
+
+// جستجو
+tebeSonati({
+    method: "posts",
+    search: "میگرن",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت اطلاعات پست
+tebeSonati({
+    method: "info",
+    id: "آی دی از متد جستجو",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## کپچا ساز
 

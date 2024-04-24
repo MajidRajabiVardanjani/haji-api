@@ -211,5 +211,22 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    tebeSonati: ({method = "posts", search = "", id = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/fun/tebesonati?action=${method}&license=${license}`;
+        if (method === "posts") {
+            furl = `${furl}&s=${search}`;
+        } else {
+            furl = `${furl}&id=${id}`;
+        }
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

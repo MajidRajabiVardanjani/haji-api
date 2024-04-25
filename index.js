@@ -13,5 +13,6 @@ module.exports = {
     shop: require("./modules/shop"),
     telegram: require("./modules/telegram"),
     pinterest: require("./modules/pinterest"),
+    proxyList: require("./modules/proxyList"),
     License: require("./modules/License")
 }

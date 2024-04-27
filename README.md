@@ -25,6 +25,7 @@ npm i haji-api --save
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
 - **[سرچ گوگل](#سرچ-گوگل)**
+- **[جستجو freepik](#جستجو-freepik)**
 - **[پراکسی لیست](#پراکسی-لیست)**
 - **[طب سنتی](#طب-سنتی)**
 - **[کپچا ساز](#کپچا-ساز)**
@@ -144,6 +145,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## جستجو freepik
+
+```javascript
+const {freepikSearch} = require("haji-api/modules/image");
+
+freepikSearch({
+    search: "موبایل",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## سرچ گوگل
 

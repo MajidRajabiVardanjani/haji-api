@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[اطلاعات IP](#اطلاعات-IP)**
 - **[جستجو freepik](#جستجو-freepik)**
 - **[سرچ گوگل](#سرچ-گوگل)**
 - **[پراکسی لیست](#پراکسی-لیست)**
@@ -145,6 +146,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## اطلاعات IP
+
+```javascript
+const {whoisIP} = require("haji-api/modules/tools");
+
+whoisIP({
+    ip: "1.1.1.1",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## جستجو freepik
 

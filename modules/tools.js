@@ -530,5 +530,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    whoisIP: ({ip = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/whois/ip?ip=${ip}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[اطلاعات دامنه](#اطلاعات-دامنه)**
 - **[اطلاعات IP](#اطلاعات-IP)**
 - **[جستجو freepik](#جستجو-freepik)**
 - **[سرچ گوگل](#سرچ-گوگل)**
@@ -146,6 +147,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## اطلاعات دامنه
+
+```javascript
+const {whoisDomain} = require("haji-api/modules/tools");
+
+whoisDomain({
+    domain: "google.com",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## اطلاعات IP
 

@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[فیلم و سریال هکس دانلود](#فیلم-و-سریال-هکس-دانلود)**
 - **[اطلاعات دامنه](#اطلاعات-دامنه)**
 - **[اطلاعات IP](#اطلاعات-IP)**
 - **[جستجو freepik](#جستجو-freepik)**
@@ -147,6 +148,26 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## فیلم و سریال هکس دانلود
+
+```javascript
+const {hexdl} = require("haji-api/modules/movie");
+
+// جستجوی فیلم و سریال
+hexdl({
+    method: "search",
+    search: "کارائیب",
+    license: "your_license"
+}).then(console.log);
+
+// دانلود
+hexdl({
+    method: "download",
+    url: "لینک فیلم یا سریال از متد قبلی",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## اطلاعات دامنه
 

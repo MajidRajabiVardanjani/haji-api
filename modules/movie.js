@@ -56,5 +56,21 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    hexdl: ({method = "search", search = "", url = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/hexdl/search?s=${search}&license=${license}`;
+        if (method === "download") {
+            furl = `${config.apiV3}/majid/hexdl/download?url=${url}&license=${license}`;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

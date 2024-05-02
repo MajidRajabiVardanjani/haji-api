@@ -47,5 +47,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         });
+    },
+    mobile: ({model = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/price/mobile?model=${model}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

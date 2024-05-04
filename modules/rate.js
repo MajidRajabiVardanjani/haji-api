@@ -58,5 +58,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    nobitex2: ({currency = "rls", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV4}/api/tools/nobitex/?currency=${currency}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

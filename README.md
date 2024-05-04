@@ -24,6 +24,8 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[نوبیتکس 2](#نوبیتکس-2)**
+- **[کپچا ساز 2](#کپچا-ساز-2)**
 - **[قیمت موبایل](#قیمت-موبایل)**
 - **[فیلم و سریال هکس دانلود](#فیلم-و-سریال-هکس-دانلود)**
 - **[اطلاعات دامنه](#اطلاعات-دامنه)**
@@ -149,6 +151,36 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## نوبیتکس 2
+
+```javascript
+const {nobitex2} = require("haji-api/modules/rate");
+
+nobitex2({
+    currency: "rls", // usdt - rls - btc or ...
+    license: "your_license"
+}).then(console.log);
+```
+
+## کپچا ساز 2
+
+```javascript
+const {captcha2} = require("haji-api/modules/tools");
+
+captcha2({
+    textColor: "#000000",
+    bgColor: "#fffffe",
+    width: 300,
+    height: 150,
+    length: 5, // 3 - 9
+    fontSize: 20, // 20 - 40
+    lineCount: 3, // 0 - 10
+    lineColor: "#000000",
+    lineWidth: 1, // 1 - 5
+    license: "your_license"
+}).then(console.log);
+```
 
 ## قیمت موبایل
 

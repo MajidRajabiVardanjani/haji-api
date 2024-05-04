@@ -72,5 +72,24 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    subtitle: ({method = "search", search = "", url = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/movie/subtitle`;
+        if (method === "search") {
+            furl = `${furl}/search?s=${search}`
+        } else {
+            furl = `${furl}/download?url=${url}`
+        }
+        furl = `${furl}&license=${license}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

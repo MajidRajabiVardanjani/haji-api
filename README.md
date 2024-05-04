@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[زیرنویس فیلم و سریال](#زیرنویس-فیلم-و-سریال)**
 - **[استخراج متن از عکس](#استخراج-متن-از-عکس)**
 - **[نوبیتکس 2](#نوبیتکس-2)**
 - **[کپچا ساز 2](#کپچا-ساز-2)**
@@ -152,6 +153,26 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## زیرنویس فیلم و سریال
+
+```javascript
+const {subtitle} = require("haji-api/modules/movie");
+
+// جستجوی زیرنویس
+subtitle({
+    method: "search",
+    search: "نام فیلم یا سریال",
+    license: "your_license"
+}).then(console.log);
+
+// دانلود زیرنویس
+subtitle({
+    method: "download",
+    url: "لینک فیلم یا سریال از متد قبلی", // url
+    license: "your_license"
+}).then(console.log);
+```
 
 ## استخراج متن از عکس
 

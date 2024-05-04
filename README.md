@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[استخراج متن از عکس](#استخراج-متن-از-عکس)**
 - **[نوبیتکس 2](#نوبیتکس-2)**
 - **[کپچا ساز 2](#کپچا-ساز-2)**
 - **[قیمت موبایل](#قیمت-موبایل)**
@@ -151,6 +152,18 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## استخراج متن از عکس
+
+```javascript
+const {extractTextFromImage} = require("haji-api/modules/image");
+
+extractTextFromImage({
+    imageUrl: "لینک عکس",
+    lang: "fa", // fa or en
+    license: "your_license"
+}).then(console.log);
+```
 
 ## نوبیتکس 2
 

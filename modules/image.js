@@ -147,5 +147,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    extractTextFromImage: ({imageUrl = "", lang = "fa", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/extract/image/text?lang=${lang}&url=${imageUrl}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

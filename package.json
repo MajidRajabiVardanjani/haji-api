@@ -1,6 +1,6 @@
 {
   "name": "haji-api",
-  "version": "1.0.102",
+  "version": "1.1.0",
   "description": "https://haji-api.ir وب سرویس های حاجی",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,8 @@
     "GPT",
     "GPT-4",
     "llama",
+    "Llama-3",
+    "Llama3",
     "v2ray",
     "mtproto",
     "Pixart",

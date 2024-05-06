@@ -239,5 +239,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    llama3: ({prompt = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/llama3?p=${prompt}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

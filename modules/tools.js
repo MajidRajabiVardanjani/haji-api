@@ -566,5 +566,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    postTracking: ({code = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/post/tracking?code=${code}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

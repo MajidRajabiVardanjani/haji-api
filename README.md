@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[دانلودر روبینو](#دانلودر-روبینو)**
 - **[چت llama3](#چت-llama3)**
 - **[زیرنویس فیلم و سریال](#زیرنویس-فیلم-و-سریال)**
 - **[استخراج متن از عکس](#استخراج-متن-از-عکس)**
@@ -154,6 +155,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## دانلودر روبینو
+
+```javascript
+const {rubinoDownloader} = require("haji-api/modules/social");
+
+rubinoDownloader({
+    url: "https://rubika.ir/post/...",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## چت llama3
 

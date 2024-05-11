@@ -567,9 +567,9 @@ module.exports = {
                 });
         })
     },
-    postTracking: ({code = "", license = ""}) => {
+    postTracking: ({code = "", type = "json", license = ""}) => {
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/post/tracking?code=${code}&license=${license}`)
+            axios.get(`${config.apiV3}/majid/tools/post/tracking?code=${code}&type=${type}&license=${license}`)
                 .then(r => {
                     resolve(r.data.result)
                 })

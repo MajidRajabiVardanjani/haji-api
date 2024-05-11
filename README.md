@@ -164,6 +164,7 @@ const {postTracking} = require("haji-api/modules/tools");
 
 postTracking({
     code: "کد مرسوله پستی",
+    type: "json", // html | json
     license: "your_license"
 }).then(console.log);
 ```

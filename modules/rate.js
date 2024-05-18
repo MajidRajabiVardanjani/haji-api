@@ -69,5 +69,24 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+
+    bitpin: ({search = "", license = ""}) => {
+        search = search.replace(/ /g, "").toString().trim().toLowerCase();
+        let furl = `${config.api}/bitpin/`;
+        if (search === "") {
+            furl = `${furl}?license=${license}`;
+        } else {
+            furl = `${furl}?search=${search}&license=${license}`;
+        }
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

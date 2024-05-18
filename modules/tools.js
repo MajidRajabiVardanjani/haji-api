@@ -577,5 +577,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    cardInquiry: ({cardNumber = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/card/inquiry?number=${cardNumber}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[اپلیکیشن آخرین خبر](#اپلیکیشن-آخرین-خبر)**
 - **[استعلام شماره کارت](#استعلام-شماره-کارت)**
 - **[بیت پین](#بیت-پین)**
 - **[رهگیری مرسوله پستی](#رهگیری-مرسوله-پستی)**
@@ -158,6 +159,40 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## اپلیکیشن آخرین خبر
+
+```javascript
+const {akharinKhabarApp} = require("haji-api/modules/news");
+
+// دسته بندی اخبار
+akharinKhabarApp({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت اخبار بر اساس دسته بندی
+akharinKhabarApp({
+    method: "category",
+    catId: -1, // The category id
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// آخرین اخبار
+akharinKhabarApp({
+    method: "latest",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// دریافت شرح خبر
+akharinKhabarApp({
+    method: "details",
+    newsId: 10065170, // از متد دریافت اخبار
+    license: "your_license"
+}).then(console.log);
+```
 
 ## استعلام شماره کارت
 

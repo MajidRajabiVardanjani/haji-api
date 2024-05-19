@@ -126,5 +126,38 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    akharinKhabarApp: ({method = "latest", page = 1, catId = -1, newsId = 0, license = ""}) => {
+        page = page ? !isNaN(Number(page.toString())) ? Number(page) : 1 : 1;
+        catId = catId ? !isNaN(Number(catId.toString())) ? Number(catId) : -1 : -1;
+
+        let furl = `${config.apiV3}/majid/akharinkhabar/app?action=${method}`;
+
+        switch (method) {
+            case "category":
+                furl = `${furl}&catid=${catId}&page=${page}`;
+                break;
+            case "details":
+                furl = `${furl}&newsid=${newsId}`;
+                break;
+            case "latest":
+                furl = `${furl}&page=${page}`;
+                break;
+            default:
+                furl = `${furl}&page=${page}`;
+                break;
+        }
+
+        furl = `${furl}&license=${license}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

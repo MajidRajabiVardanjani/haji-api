@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[اپلیکیشن دیجی کالا](#اپلیکیشن-دیجی-کالا)**
 - **[مزاحم یاب](#مزاحم-یاب)**
 - **[اپلیکیشن آخرین خبر](#اپلیکیشن-آخرین-خبر)**
 - **[استعلام شماره کارت](#استعلام-شماره-کارت)**
@@ -160,6 +161,47 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## اپلیکیشن دیجی کالا
+
+```javascript
+const {digikalaApp} = require("haji-api/modules/shop");
+
+// صفحه اصلی
+digikalaApp({
+    method: "home",
+    license: "your_license"
+}).then(console.log);
+
+// دسته بندی محصولات
+digikalaApp({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت محصولات بر اساس دسته بندی
+digikalaApp({
+    method: "category",
+    category_id: 11, // شناسه دسته بندی
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// جستجوی محصول
+digikalaApp({
+    method: "search",
+    search: "موبایل",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// مشخصات محصول
+digikalaApp({
+    method: "product",
+    id: "شناسه محصول - id",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## مزاحم یاب
 

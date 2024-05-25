@@ -599,5 +599,41 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    aparat: ({
+                 method = "home",
+                 page = 1,
+                 search = "",
+                 videoUID = "",
+                 categoryId = "",
+                 license = ""
+             }) => {
+
+        let furl = `${config.apiV3}/majid/aparat?action=${method}&license=${license}`;
+
+        switch (method) {
+            case "home":
+                furl = `${furl}&page=${page}`;
+                break;
+            case  "search":
+                furl = `${furl}&s=${search}`;
+                break;
+            case  "category":
+                furl = `${furl}&catid=${categoryId}`;
+                break;
+            case  "download":
+                furl = `${furl}&uid=${videoUID}`;
+                break;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

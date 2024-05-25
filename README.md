@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[آپارات](#آپارات)**
 - **[اپلیکیشن دیجی کالا](#اپلیکیشن-دیجی-کالا)**
 - **[مزاحم یاب](#مزاحم-یاب)**
 - **[اپلیکیشن آخرین خبر](#اپلیکیشن-آخرین-خبر)**
@@ -161,6 +162,47 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## آپارات
+
+```javascript
+const {aparat} = require("haji-api/modules/tools");
+
+
+// لیست دسته بندی
+aparat({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// ویدیو های صفحه اصلی
+aparat({
+    method: "home",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// جستجو
+aparat({
+    method: "search",
+    s: "برنامه نویسی",
+    license: "your_license"
+}).then(console.log);
+
+// ویدیو بر اساس دسته بندی
+aparat({
+    method: "category",
+    categoryId: "از متد دریافت دسته بندی ها id",
+    license: "your_license"
+}).then(console.log);
+
+// اطلاعات و دانلود ویدیو
+aparat({
+    method: "download",
+    videoUID: "از متدهای صفحه اصلی، جستجو و ویدیو بر اساس دسته بندی uid",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## اپلیکیشن دیجی کالا
 

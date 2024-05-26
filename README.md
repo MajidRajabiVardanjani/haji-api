@@ -286,8 +286,17 @@ digikalaApp({
 ```javascript
 const {numberBook} = require("haji-api/modules/tools");
 
+// دریافت اطلاعات شماره
 numberBook({
+    method: "name",
     phone: "09...",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت شماره بر اساس اسم
+numberBook({
+    method: "phone",
+    name: "اسم",
     license: "your_license"
 }).then(console.log);
 ```

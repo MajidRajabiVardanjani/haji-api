@@ -589,9 +589,16 @@ module.exports = {
                 });
         })
     },
-    numberBook: ({phone = "", license = ""}) => {
+    numberBook: ({method = "name", phone = "", name = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/tools/number/book`;
+
+        if (method === "name") {
+            furl = `${furl}?phone=${phone}&license=${license}`;
+        } else {
+            furl = `${furl}/phones?name=${name}&license=${license}`;
+        }
         return new Promise(resolve => {
-            axios.get(`${config.apiV3}/majid/tools/number/book?phone=${phone}&license=${license}`)
+            axios.get(furl)
                 .then(r => {
                     resolve(r.data.result);
                 })

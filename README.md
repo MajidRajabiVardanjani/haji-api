@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[اپلکیشن ترب](#اپلیکیشن-ترب)**
 - **[آپارات](#آپارات)**
 - **[اپلیکیشن دیجی کالا](#اپلیکیشن-دیجی-کالا)**
 - **[مزاحم یاب](#مزاحم-یاب)**
@@ -162,6 +163,41 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## اپلیکیشن ترب
+
+```javascript
+const {torobApp} = require("haji-api/modules/shop");
+
+// لیست دسته بندی
+torobApp({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت بر اساس دسته بندی
+torobApp({
+    method: "category",
+    categoryId: 94, // از متد لیست دسته بندی id
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// جستجو
+torobApp({
+    method: "search",
+    search: "گوشی",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// مشخصات و اطلاعات
+torobApp({
+    method: "info",
+    id: "شناسه از متد دسته بندی یا جستجو",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## آپارات
 

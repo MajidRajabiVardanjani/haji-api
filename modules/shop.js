@@ -1,5 +1,6 @@
 const config = require("./config");
 const axios = require("axios");
+const {defaults} = require("axios");
 
 module.exports = {
     digikalaSearch: ({search, license}) => {
@@ -57,6 +58,39 @@ module.exports = {
         }
 
         furl = `${furl}&license=${license}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    },
+
+    torobApp: ({method = "categories", page = 1, categoryId = 94, search = "", id = "", license = ""}) => {
+        let furl = `https://api3.haji-api.ir/majid/torob/app`;
+
+        switch (method) {
+            case "categories":
+                furl = `${furl}/categories?license=${license}`;
+                break;
+            case "category":
+                furl = `${furl}/category?id=${categoryId}&page=${page}&license=${license}`;
+                break;
+            case "search":
+                furl = `${furl}/search?s=${search}&page=${page}&license=${license}`;
+                break;
+            case "info":
+                furl = `${furl}/info?id=${id}&license=${license}`;
+                break;
+
+            default:
+                furl = `${furl}/categories?license=${license}`;
+                break;
+        }
 
         return new Promise(resolve => {
             axios.get(furl)

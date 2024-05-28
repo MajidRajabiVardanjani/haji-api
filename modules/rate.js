@@ -88,5 +88,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    bonbast: ({license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/price/bonbast?license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -159,5 +159,36 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    zoomg: ({method = "home", page = 1, search = "", url = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/zoomg`;
+        switch (method) {
+            case "home":
+                furl = `${furl}/home?license=${license}`;
+                break;
+            case "news":
+                furl = `${furl}/news?page=${page}&license=${license}`;
+                break;
+            case "search":
+                furl = `${furl}/search?page=${page}&s=${search}&license=${license}`;
+                break;
+            case "info":
+                furl = `${furl}/info?url=${url}&license=${license}`;
+                break;
+
+            default:
+                furl = `${furl}/home?license=${license}`;
+                break;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

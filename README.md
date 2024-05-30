@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[زومجی](#زومجی)**
 - **[نرخ ارز بن بست](#نرخ-ارز-بن-بست)**
 - **[اپلکیشن ترب](#اپلیکیشن-ترب)**
 - **[آپارات](#آپارات)**
@@ -164,6 +165,40 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## زومجی
+
+```javascript
+const {zoomg} = require("haji-api/modules/news");
+
+// مطالب صفحه اصلی
+zoomg({
+    method: "home",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت مطالب
+zoomg({
+    method: "news",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// جستجو مطالب
+zoomg({
+    method: "search",
+    search: "Game",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// توضیحات
+zoomg({
+    method: "info",
+    url: "zoomg article url ...", // از متد های قبلی
+    license: "your_license"
+}).then(console.log);
+```
 
 ## نرخ ارز بن بست
 

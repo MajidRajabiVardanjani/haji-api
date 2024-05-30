@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[موزیک مسترتهران](#موزیک-مسترتهران)**
 - **[زومجی](#زومجی)**
 - **[نرخ ارز بن بست](#نرخ-ارز-بن-بست)**
 - **[اپلکیشن ترب](#اپلیکیشن-ترب)**
@@ -165,6 +166,24 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## موزیک مسترتهران
+
+```javascript
+const {mrtehran} = require("haji-api/modules/music");
+
+// آخرین آهنگ ها
+mrtehran({
+    license: "your_license"
+}).then(console.log);
+
+// جستجوی آهنگ
+mrtehran({
+    search: "خراطها",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+```
 
 ## زومجی
 

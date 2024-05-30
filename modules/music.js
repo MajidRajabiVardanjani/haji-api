@@ -115,7 +115,7 @@ module.exports = {
                 });
         })
     },
-    soundcloud({method = "search", search = "", url = "", license = ""}) {
+    soundcloud: ({method = "search", search = "", url = "", license = ""}) => {
         let furl = `${config.apiV3}/majid/soundcloud`;
         if (method === "search") {
             furl = `${furl}/search?s=${search}`;
@@ -124,6 +124,21 @@ module.exports = {
         }
         furl = `${furl}&license=${license}`;
 
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    },
+    mrtehran: ({search = "", page = 1, license = ""}) => {
+        let furl = `${config.apiV3}/majid/music/mrtehran?license=${license}`;
+        if (search !== "") {
+            furl = `${furl}&s=${search}&page=${page}`;
+        }
         return new Promise(resolve => {
             axios.get(furl)
                 .then(r => {

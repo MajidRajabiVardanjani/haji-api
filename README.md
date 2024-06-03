@@ -177,15 +177,16 @@ const {cryptoNews} = require("haji-api/modules/news");
 
 // لیست اخبار
 cryptoNews({
-    method:"list",
+    method: "list",
+    page: 1,
     license: "your_license"
 }).then(console.log);
 
 
 // شرح خبر
 cryptoNews({
-    method:"info",
-    link:"لینک خبر از متد لیست اخبار",
+    method: "info",
+    link: "لینک خبر از متد لیست اخبار",
     license: "your_license"
 }).then(console.log);
 ```

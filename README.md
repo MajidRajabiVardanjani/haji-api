@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[والپیپر رندوم](#والپیپر-رندوم)**
 - **[موزیک مسترتهران](#موزیک-مسترتهران)**
 - **[زومجی](#زومجی)**
 - **[نرخ ارز بن بست](#نرخ-ارز-بن-بست)**
@@ -166,6 +167,16 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## والپیپر رندوم
+
+```javascript
+const {randomWallpaper} = require("haji-api/modules/image");
+
+randomWallpaper({
+    license: "your_license"
+}).then(console.log); // Base64 Image
+```
 
 ## موزیک مسترتهران
 

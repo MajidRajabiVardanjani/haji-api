@@ -158,5 +158,18 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    randomWallpaper: (license = "") => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/fun/wallpaper/random?license=${license}`, {
+                responseType: 'arraybuffer'
+            })
+                .then(r => {
+                    resolve(config.arrayBufferToBase64(r.data));
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
     }
 }

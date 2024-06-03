@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[رمزارز نیوز](#رمزارز-نیوز)**
 - **[والپیپر رندوم](#والپیپر-رندوم)**
 - **[موزیک مسترتهران](#موزیک-مسترتهران)**
 - **[زومجی](#زومجی)**
@@ -167,6 +168,28 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+
+## رمزارز نیوز
+
+```javascript
+const {cryptoNews} = require("haji-api/modules/news");
+
+// لیست اخبار
+cryptoNews({
+    method:"list",
+    license: "your_license"
+}).then(console.log);
+
+
+// شرح خبر
+cryptoNews({
+    method:"info",
+    link:"لینک خبر از متد لیست اخبار",
+    license: "your_license"
+}).then(console.log);
+```
+
 
 ## والپیپر رندوم
 

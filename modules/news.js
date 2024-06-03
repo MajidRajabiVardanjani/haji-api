@@ -160,7 +160,7 @@ module.exports = {
                 });
         })
     },
-    zoomg: ({method = "home", page = 1, search = "", url = "", license = ""}) => {
+    zoomg: ({method = "home", page = 1, search = "", link = "", license = ""}) => {
         let furl = `${config.apiV3}/majid/zoomg`;
         switch (method) {
             case "home":
@@ -179,6 +179,23 @@ module.exports = {
             default:
                 furl = `${furl}/home?license=${license}`;
                 break;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    },
+
+    cryptoNews: ({method = "list", page = 1, link = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/crypto/news/list?page=${page}&license=${license}`;
+        if (method === "info") {
+            furl = `${config.apiV3}/majid/crypto/news/info?link=${link}&license=${license}`;
         }
 
         return new Promise(resolve => {

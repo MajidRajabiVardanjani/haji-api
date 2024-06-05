@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[موپن](#موپن)**
 - **[رمزارز نیوز](#رمزارز-نیوز)**
 - **[والپیپر رندوم](#والپیپر-رندوم)**
 - **[موزیک مسترتهران](#موزیک-مسترتهران)**
@@ -169,6 +170,46 @@ npm i haji-api --save
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
 
+## موپن
+
+```javascript
+const {mopon} = require("haji-api/modules/shop");
+
+// کوپن های صفحه اصلی
+mopon({
+    method: "home",
+    license: "your_license"
+}).then(console.log);
+
+// لیست دسته بندی
+mopon({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// دریافت لیست کوپن بر اساس دسته بندی
+mopon({
+    method: "category",
+    id: "شناسه دسته بندی",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// جستجوی برند
+mopon({
+    method: "search",
+    search: "دیجی کالا",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// اطلاعات کوپن و دریافت کد تخفیف
+mopon({
+    method: "info",
+    id: "شناسه کوپن",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## رمزارز نیوز
 
@@ -190,7 +231,6 @@ cryptoNews({
     license: "your_license"
 }).then(console.log);
 ```
-
 
 ## والپیپر رندوم
 

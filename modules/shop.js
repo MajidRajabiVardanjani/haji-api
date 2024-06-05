@@ -101,5 +101,46 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+
+    mopon: ({method = "home", id = "", page = 1, search = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/mopon`;
+
+        switch (method) {
+            case "home":
+                furl = `${furl}/home`;
+                break;
+            case "categories":
+                furl = `${furl}/categories`;
+                break;
+            case "category":
+                furl = `${furl}/category?id=${id}&page=${page}`;
+                break;
+            case "search":
+                furl = `${furl}/search?s=${search}&page=${page}`;
+                break;
+            case "info":
+                furl = `${furl}/info?id=${id}`;
+                break;
+            default:
+                furl = `${furl}/home`;
+                break;
+        }
+
+        if (furl.includes("?")) {
+            furl = `${furl}&license=${license}`;
+        } else {
+            furl = `${furl}?license=${license}`;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(err);
+                });
+        })
     }
 }

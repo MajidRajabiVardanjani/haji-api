@@ -24,6 +24,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[فوتبال 360](#فوتبال-360)**
 - **[موپن](#موپن)**
 - **[رمزارز نیوز](#رمزارز-نیوز)**
 - **[والپیپر رندوم](#والپیپر-رندوم)**
@@ -169,6 +170,26 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## فوتبال 360
+
+```javascript
+const {football360} = require("haji-api/modules/news");
+
+// لیست اخبار
+football360({
+    method: "news",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// شرح خبر
+football360({
+    method: "info",
+    id: "News id",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## موپن
 

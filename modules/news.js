@@ -207,5 +207,23 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    football360: ({method = "news", page = 1, id = "", license = ""}) => {
+        let furl = `${config.apiV3}//majid/football360/news`;
+        if (method === "info") {
+            furl = `${furl}/info?id=${id}`;
+        } else {
+            furl = `${furl}/list?page=${page}`;
+        }
+        furl = `${furl}&license=${license}`;
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -18,8 +18,6 @@ npm i haji-api --save
 
 #### [پشتیبانی تلگرام (دکتر لینوکس)](https://t.me/DrLinuxDev)
 
-#### [پشتیبانی تلگرام (مهدی)](https://t.me/require_once)
-
 ## لیست سرویس های در دسترس
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)

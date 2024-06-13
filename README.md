@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[تیک تاک](#تیک-تاک)**
 - **[فوتبال 360](#فوتبال-360)**
 - **[موپن](#موپن)**
 - **[رمزارز نیوز](#رمزارز-نیوز)**
@@ -168,6 +169,27 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## تیک تاک
+
+```javascript
+const {tiktok} = require("haji-api/modules/social");
+
+// پروفایل کاربر
+tiktok({
+    method: "profile",
+    username: "username",
+    license: "your_license"
+}).then(console.log);
+
+// دانلودر
+tiktok({
+    method: "download",
+    url: "لینک",
+    license: "your_license"
+}).then(console.log);
+
+```
 
 ## فوتبال 360
 

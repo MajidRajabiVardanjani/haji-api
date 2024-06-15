@@ -99,5 +99,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    gold: ({license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/price/gold?license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[سرکتاب](#سرکتاب)**
 - **[قیمت طلا](#قیمت-طلا)**
 - **[تیک تاک](#تیک-تاک)**
 - **[فوتبال 360](#فوتبال-360)**
@@ -170,6 +171,19 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## سرکتاب
+
+```javascript
+const {sarketab} = require("haji-api/modules/fun");
+
+sarketab({
+    name: "اسم شخص",
+    mother: "اسم مادر شخص",
+    gender: "جنسیت", // male - female
+    license: "your_license"
+}).then(console.log);
+```
 
 ## قیمت طلا
 

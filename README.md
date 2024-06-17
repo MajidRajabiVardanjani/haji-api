@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[تشخیص چهره](#تشخیص-چهره)**
 - **[سرکتاب](#سرکتاب)**
 - **[قیمت طلا](#قیمت-طلا)**
 - **[تیک تاک](#تیک-تاک)**
@@ -171,6 +172,27 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## تشخیص چهره
+
+```javascript
+const {faceRecognition} = require("haji-api/modules/image");
+
+// تشابه چهره
+faceRecognition({
+    method: "similarityOfFace",
+    imageUrl1: "لینک عکس اول",
+    imageUrl2: "لینک عکس دوم",
+    license: "your_license"
+}).then(console.log);
+
+// تشخیص و شمارش چهره
+faceRecognition({
+    method: "findFace",
+    imageUrl1: "لینک عکس",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## سرکتاب
 

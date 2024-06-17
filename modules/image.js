@@ -171,5 +171,24 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         });
+    },
+    faceRecognition: ({method = "similarityOfFace", imageUrl1 = "", imageUrl2 = "", license = ""}) => {
+        let t = method === "similarityOfFace" ? "Similarity-Of-Face" : "Find-Face";
+        let furl = `${config.api}/FaceRecognition/?Type=${t}`;
+        if (method === "similarityOfFace") {
+            furl = `${furl}&Url1=${encodeURI(imageUrl1)}&Url2=${encodeURI(imageUrl2)}`;
+        } else {
+            furl = `${furl}&Url1=${encodeURI(imageUrl1)}`;
+        }
+        furl = `${furl}&license=${license}`;
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result)
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        });
     }
 }

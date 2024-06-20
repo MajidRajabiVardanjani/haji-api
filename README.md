@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[تشخیص زبان متن](#تشخیص-زبان-متن)**
 - **[تشخیص چهره](#تشخیص-چهره)**
 - **[سرکتاب](#سرکتاب)**
 - **[قیمت طلا](#قیمت-طلا)**
@@ -172,6 +173,17 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+## تشخیص زبان متن
+
+```javascript
+const {languageIdentifier} = require("haji-api/modules/tools");
+
+languageIdentifier({
+    text: "سلام دنیا",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## تشخیص چهره
 

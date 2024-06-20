@@ -642,5 +642,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    languageIdentifier: ({text = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/tools/language/identifier?text=${text}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

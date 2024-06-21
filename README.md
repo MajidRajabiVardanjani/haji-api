@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[برترین ها](#برترین-ها)**
 - **[تشخیص زبان متن](#تشخیص-زبان-متن)**
 - **[تشخیص چهره](#تشخیص-چهره)**
 - **[سرکتاب](#سرکتاب)**
@@ -173,6 +174,35 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+
+## برترین ها
+
+```javascript
+const {bartarinha} = require("haji-api/modules/news");
+
+// آخرین اخبار
+bartarinha({
+    method: "latest",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// جستجو اخبار
+bartarinha({
+    method: "search",
+    search: "خبر",
+    page: 1,
+    license: "your_license"
+}).then(console.log);
+
+// شرح خبر
+bartarinha({
+    method: "info",
+    record_id: "شناسه خبر",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## تشخیص زبان متن
 

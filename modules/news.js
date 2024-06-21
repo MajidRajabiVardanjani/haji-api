@@ -225,5 +225,36 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    bartarinha: ({method = "latest", page = 1, search = "", record_id, license = ""}) => {
+        let furl = `${config.apiV3}/majid/bartarinha?action=${method}`;
+
+        switch (method) {
+            case "latest":
+                furl = `${furl}&page=${page}`;
+                break;
+            case "search":
+                furl = `${furl}&page=${page}&s=${search}`;
+                break;
+            case "info":
+                furl = `${furl}&record_id=${record_id}`;
+                break;
+
+            default:
+                furl = `${furl}&page=${page}`;
+                break;
+        }
+
+        furl = `${furl}&license=${license}`;
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

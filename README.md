@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[سیم سیمی](#سیم-سیمی)**
 - **[برترین ها](#برترین-ها)**
 - **[تشخیص زبان متن](#تشخیص-زبان-متن)**
 - **[تشخیص چهره](#تشخیص-چهره)**
@@ -175,6 +176,16 @@ npm i haji-api --save
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
 
+## سیم سیمی
+
+```javascript
+const {simsimi} = require("haji-api/modules/fun");
+
+simsimi({
+    question: "سلام خوبی؟",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## برترین ها
 

@@ -239,5 +239,16 @@ module.exports = {
                     config.resolveError(resolve, err);
                 });
         })
+    },
+    simsimi: ({question = "", license = ""}) => {
+        return new Promise(resolve => {
+            axios.get(`${config.apiV3}/majid/simsimi?q=${question}&license=${license}`)
+                .then(r => {
+                    resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
     }
 }

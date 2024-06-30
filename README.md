@@ -14,7 +14,7 @@ npm i haji-api --save
 
 #### [پشتیبانی تلگرام (احسان)](https://t.me/HttpAdmin)
 
-#### [پشتیبانی تلگرام (مجید)](https://t.me/MajidRajabiVardanjani)
+#### [پشتیبانی تلگرام (مجید)](https://t.me/MajidDeveloperHaji)
 
 #### [پشتیبانی تلگرام (دکتر لینوکس)](https://t.me/DrLinuxDev)
 

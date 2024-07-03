@@ -22,6 +22,7 @@ npm i haji-api --save
 
 ### [دریافت لایسنس رایگان](https://t.me/hajiapi_license_bot)
 
+- **[باخبر](#باخبر)**
 - **[سیم سیمی](#سیم-سیمی)**
 - **[برترین ها](#برترین-ها)**
 - **[تشخیص زبان متن](#تشخیص-زبان-متن)**
@@ -175,6 +176,46 @@ npm i haji-api --save
 - **[متن به گفتار اشتراکی](#متن-به-گفتار-اشتراکی)**
 - **[GPT اشتراکی](#GPT-اشتراکی)**
 - **[دانلودر اینستاگرام](#دانلودر-اینستاگرام)**
+
+
+## باخبر
+
+```javascript
+const {bakhabar} = require("haji-api/modules/news");
+
+// اخبار صفحه اصلی
+bakhabar({
+    method: "home",
+    license: "your_license"
+}).then(console.log);
+
+// دسته بندی ها
+bakhabar({
+    method: "categories",
+    license: "your_license"
+}).then(console.log);
+
+// اخبار بر اساس دسته بندی
+bakhabar({
+    method: "category",
+    id: "category id",
+    license: "your_license"
+}).then(console.log);
+
+// جستجو
+bakhabar({
+    method: "search",
+    search: "خبر",
+    license: "your_license"
+}).then(console.log);
+
+// شرح خبر
+bakhabar({
+    method: "info",
+    id: "news id",
+    license: "your_license"
+}).then(console.log);
+```
 
 ## سیم سیمی
 

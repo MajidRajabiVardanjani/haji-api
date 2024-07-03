@@ -1,5 +1,6 @@
 const config = require("./config");
 const axios = require("axios");
+const sea = require("node:sea");
 
 module.exports = {
     irna: (license) => {
@@ -251,6 +252,47 @@ module.exports = {
             axios.get(furl)
                 .then(r => {
                     resolve(r.data.result);
+                })
+                .catch(err => {
+                    config.resolveError(resolve, err);
+                });
+        })
+    },
+    bakhabar: ({method = "home", id = "", page = 1, search = "", license = ""}) => {
+        let furl = `${config.apiV3}/majid/bakhabar`;
+
+        switch (method) {
+            case "home":
+                furl = `${furl}/home`;
+                break;
+            case "categories":
+                furl = `${furl}/categories`;
+                break;
+            case "category":
+                furl = `${furl}/category?id=${id}`;
+                break;
+            case "search":
+                furl = `${furl}/category?s=${search}`;
+                break;
+            case "info":
+                furl = `${furl}/info?id=${id}`;
+                break;
+
+            default:
+                furl = `${furl}/home`;
+                break;
+        }
+
+        if (furl.includes("?")) {
+            furl = `${furl}&license=${license}`;
+        } else {
+            furl = `${furl}?license=${license}`;
+        }
+
+        return new Promise(resolve => {
+            axios.get(furl)
+                .then(r => {
+                    resolve(r.data.result)
                 })
                 .catch(err => {
                     config.resolveError(resolve, err);
